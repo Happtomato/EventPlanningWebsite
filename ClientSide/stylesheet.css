@@ -4,6 +4,8 @@ body {
     width: 100%;
     padding: 0;
     margin: 0;
+    background: rgb(42, 12, 75);
+    background: linear-gradient(0deg, rgba(42, 12, 75, 1) 0%, rgba(191, 108, 255, 1) 100%);
     overflow: hidden !important;
 }
 
@@ -67,6 +69,7 @@ body {
 }
 
 #index-right-textblock-text {
+    
     font-size: 1.5vw;
     font-family: 'Dosis', Sans-serif;
 }
@@ -85,23 +88,35 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    transform: rotate(-90deg);
     font-family: 'Dosis', Sans-serif;
     weight: normal;
 }
 
 #index-left-logo-CandyBay {
     font-size: 4.5vw;
+  color: #9b34ff;
+  text-align: center;
+  
+  top: 0;right: 0;color: #cccccc;
+  color: #cccccc; text-decoration:none; font-weight:normal;
+  font-family: Verdana;color: #663399; font-weight: bold; text-shadow:0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #663399,0 0 70px #663399,0 0 80px #663399,0 0 100px #663399,0 0 170px #663399;text-align:center; line-height:250px;
+
+    
     font-family: 'Dosis', sans-serif;
     weight: bold;
 }
 
 #index-left-logo-subtext {
-    font-size: 2.5vw;
+    
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-decoration: underline;
-    text-decoration-color: red;
+    font-size: 2.5vw;
+    
+    top: 0;right: 0;color: #cccccc;
+    color: #cccccc; text-decoration:none; font-weight:normal;
+    font-family: Verdana;color: #663399; font-weight: bold; text-shadow:0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #663399,0 0 70px #663399,0 0 80px #663399,0 0 100px #663399,0 0 170px #663399;text-align:center; line-height:250px;
+
 }
+
 
 #thankyou-text {
     font-family: 'Courier New', Courier, monospace;
