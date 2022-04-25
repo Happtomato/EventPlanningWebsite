@@ -2,30 +2,28 @@
 
 class ValidateUser{
 
+    function userIsValid(){
 
-    function isValid(){
+        //create connection to db
+        require_once("dbcontroller.php");
+        $db_handle = new DBController();
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "D0minik2005";
-        $dbname = "webshop";
+        $conn = $db_handle->connectDB();
 
-// Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+        // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $userEmail = $_POST['email'];
+        $userLogin = $_POST['login'];
         $userPassword = $_POST['password'];
 
-        $sql = "SELECT password FROM useraccounts WHERE email $userEmail";
-        $result = $conn->query($sql);
+        $sql = "SELECT UserPassword FROM UserAccounts WHERE UserLogin $userLogin";
+        $hash = $conn->query($sql);
 
         $conn->close();
 
-        if ($userPassword === $result) {
+        if (password_verify($userPassword, $hash)) {
             return true;
         } else {
             return false;
@@ -33,23 +31,23 @@ class ValidateUser{
 
     }
 
-    function getUserID()
+    function getUserID($userLogin)
     {
 
-        if ($this->isValid()) {
-            $servername = "localhost";
-            $username = "root";
-            $password = "D0minik2005";
-            $dbname = "webshop";
+        if ($this->userIsValid()) {
 
-// Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+            //create connection to db
+            require_once("dbcontroller.php");
+            $db_handle = new DBController();
+
+            $conn = $db_handle->connectDB();
+
+            // Check connection
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT user_ID FROM useraccounts WHERE email ";
+            $sql = "SELECT User_ID FROM UserAccounts WHERE userLogin $userLogin";
             $result = $conn->query($sql);
 
             $conn->close();
