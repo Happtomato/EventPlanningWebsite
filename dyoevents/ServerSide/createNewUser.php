@@ -1,6 +1,6 @@
 <?php
 
-function createUser($userLogin, $userPassword)
+function createUser($userLogin,$number,$userPassword)
 {
     //create connection to db
     require_once("dbcontroller.php");
@@ -16,11 +16,12 @@ function createUser($userLogin, $userPassword)
     $hashedPW = password_hash($userPassword, PASSWORD_DEFAULT);
 
    //insert new User in database
-    $sql = "INSERT INTO UserAccounts(UserLogin, UserPassword)
-    VALUES ('$userLogin','$hashedPW')";
+    $sql = "INSERT INTO UserAccounts(UserLogin,phoneNumber ,UserPassword)
+    VALUES ('$userLogin','$number','$hashedPW')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
+        Header("../index.html");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
