@@ -24,9 +24,14 @@ class ValidateUser{
         $conn->close();
 
         if (password_verify($userPassword, $hash)) {
-            return true;
+            if($this->getUserType($userLogin) == "admin"){
+                include "AdminPage.php";
+            }
+            else{
+                include "MemberPage.php";
+            }
         } else {
-            return false;
+            echo "Benutzer wurde nicht gefunden";
         }
 
     }
@@ -54,6 +59,29 @@ class ValidateUser{
 
             return $result;
         }
+        echo "error";
+        return "";
+    }
+    function getUserType($userLogin)
+    {
+            //create connection to db
+            require_once("dbcontroller.php");
+            $db_handle = new DBController();
+
+            $conn = $db_handle->connectDB();
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "SELECT userType FROM UserAccounts WHERE userLogin $userLogin";
+            $result = $conn->query($sql);
+
+            $conn->close();
+
+            return $result;
+
         echo "error";
         return "";
     }
