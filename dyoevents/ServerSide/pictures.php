@@ -31,7 +31,7 @@ $db_handle = new DBController();
     }
     ?>
 </div>
-</div> <!-- End middle col -->
+</div>
 
 </body>
 </html>
