@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     width: 100%;
-    
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 0;
     margin: 0;
     /*overflow: hidden !important;*/
@@ -12,45 +12,36 @@ body {
     text-decoration: none;
 
 }
-.parent {
-    display: grid;
-    grid-template-columns: 0.1fr repeat(4, 1fr);
-    grid-template-rows: 0.1fr repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 50px;
-    }
-    
-    .logo { grid-area: 1 / 1 / 2 / 2;}
-    .main { grid-area: 2 / 2 / 5 / 4; }
-    .nav { grid-area: 1 / 4 / 2 / 6; 
-    text-align: center;}
-    .second { grid-area: 2 / 4 / 4 / 6; }
-    .userspace { grid-area: 4 / 4 / 5 / 6; }
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 50px;
 
-    .navbutton{
-      background-color:#ffffff;
-      border-radius:20px;
-      border:1px solid #6815b0;
-      display:inline-block;
-      cursor:pointer;
-      color:#6a10d1;
-      font-family:Arial;
-      font-size:18px;
-      padding:18px 50px;
-      text-decoration:none !important;
-      
-    }
-    a{
-      text-decoration: none;
-    }
-    a:hover{
-      text-decoration: none;
-    }
-    .navbutton:hover {
-      background-color:#af58fc;
-    }
-    .navbutton:active {
-      position:relative;
-      top:1px;
-    }
+  font-size: 2em;
+}
+
+#nav-title {
+  margin-right: auto;
+  font-size: 0.1em;
+}
+
+header li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: #555;
+  transition: all 0.3s ease 0s;
+}
+
+header a:hover {
+  color: #b2dfdb;
+}
+img{
+  width: 150em;
+}
     
