@@ -16,7 +16,7 @@ function createUser($userLogin,$number,$userPassword)
     $hashedPW = password_hash($userPassword, PASSWORD_DEFAULT);
 
    //insert new User in database
-    $sql = "INSERT INTO UserAccounts(UserLogin,phoneNumber ,UserPassword)
+    $sql = "INSERT INTO UserAccounts(UserLogin,phoneNumber,UserPassword)
     VALUES ('$userLogin','$number','$hashedPW')";
 
     if ($conn->query($sql) === TRUE) {
