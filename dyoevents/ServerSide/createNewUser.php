@@ -2,6 +2,7 @@
 
 function createUser($userLogin,$number,$userPassword)
 {
+    echo "in create user func";
     //create connection to db
     require_once("dbcontroller.php");
     $db_handle = new DBController();
@@ -9,6 +10,7 @@ function createUser($userLogin,$number,$userPassword)
     $conn = $db_handle->connectDB();
 
    if ($conn->connect_error) {
+       echo
         die("Connection failed: " . $conn->connect_error);
     }
 
