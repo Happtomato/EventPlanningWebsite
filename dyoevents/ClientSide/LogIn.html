@@ -2,20 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../ClientSide/stylesheet.css" />
+    <link rel="icon" type="image/png" href="../Pictures/D-Logo.png" />
+    <title>Log In</title>
 </head>
 <body>
 
-    <div>
-        <form action="../ServerSide/ValidateUser.php" method="post">
-            <div id="loginField">
-                <p>email: <input type="text" name="login" /></p>
-            </div>
-            <div id="passwordField">
-                <p>passwort: <input type="password" name="password" /></p>
-            </div>
-            <p><input type="submit" /></p>
-        </form>
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+          
+          <img src="../Pictures/logo.png" alt="Avatar" class="avatar">
+        </div>
+    
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+    
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button type="submit">Login</button>
+          
+        </div>
+    
+        <div class="container" >
+         <a href=signUpForm.html class="SignInButton">Sign In</a>
+          <span class="psw">Forgot <a href="#" class="navText">password?</a></span>
+        </div>
+      </form>
     </div>
 
 </body>
