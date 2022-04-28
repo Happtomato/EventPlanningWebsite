@@ -9,7 +9,6 @@ function createUser($userLogin,$number,$userPassword)
     $conn = $db_handle->connectDB();
 
    if ($conn->connect_error) {
-       echo
         die("Connection failed: " . $conn->connect_error);
     }
 
@@ -17,12 +16,10 @@ function createUser($userLogin,$number,$userPassword)
     $hashedPW = password_hash($userPassword, PASSWORD_DEFAULT);
 
    //insert new User in database
-    $sql = "INSERT INTO UserAccounts(UserLogin,phoneNumber,UserPassword)
-    VALUES ('$userLogin','$number','$hashedPW')";
+    $sql = "INSERT INTO UserAccounts(`UserLogin`, `phoneNumber`, `UserPassword`, `userType`) VALUES ('$userLogin','$number','$hashedPW','user' ";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
-        Header("../index.html");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
