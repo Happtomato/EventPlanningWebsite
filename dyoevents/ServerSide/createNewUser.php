@@ -2,9 +2,8 @@
 
 function createUser($userLogin,$number,$userPassword)
 {
-    echo "in create user func";
     //create connection to db
-    require_once("dbcontroller.php");
+    require_once("DBController.php");
     $db_handle = new DBController();
 
     $conn = $db_handle->connectDB();

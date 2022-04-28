@@ -25,6 +25,10 @@ header {
   margin-right: auto;
   font-size: 0.1em;
 }
+#navButtons{
+  border-bottom: 3px solid;
+  border-color: #125E8A;  
+}
 
 header li {
   list-style: none;
@@ -44,4 +48,21 @@ header a:hover {
 img{
   width: 150em;
 }
-    
+#FormBorder {
+  
+  border-radius: 15px 50px 30px 5px;
+  border-color: #555;
+  border-style: solid;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+#loginField{
+
+}
+#passwordField{
+
+}
+#SubmitButton{
+  
+}

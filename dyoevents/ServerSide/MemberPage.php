@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 
 <!doctype html>
 <html lang="en">
@@ -10,5 +14,14 @@
 </head>
 <body>
 
+    <div id="navButtons">
+        <ul>
+            <li><a href="ClientSide/LogIn.html">Profile</a></li>
+            <li><a href="ClientSide/galery.html">Galery</a></li>
+            <li><a href="ServerSide/shop.php">Shop</a></li>
+            <li><a href="ClientSide/AboutUs.html">About Us</a></li>
+        </ul>
+    </div>
+    
 </body>
 </html>

@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css" />
+    <title>LogIn</title>
+    
 </head>
 <body>
 
-    <div>
+    <div id="FormBorder">
         <form action="../ServerSide/ValidateUser.php" method="post">
             <div id="loginField">
-                <p>email: <input type="text" name="login" /></p>
+                <p>email: <br /><input type="text" name="login" /></p>
             </div>
             <div id="passwordField">
                 <p>passwort: <input type="password" name="password" /></p>
             </div>
-            <p><input type="submit" /></p>
+            <div id="SubmitButton">
+                <p><input type="submit"  /></p>
+            </div>
         </form>
     </div>
 
