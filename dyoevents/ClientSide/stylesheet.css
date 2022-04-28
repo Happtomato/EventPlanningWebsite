@@ -162,5 +162,8 @@ span.psw {
      display: block;
      float: none;
   }
+  img{
+    width: 100%;
+  }
  
 }
