@@ -2,26 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheet.css" />
-    <title>LogIn</title>
-    
+
+    <link rel="stylesheet" href="../ClientSide/stylesheet.css" />
+    <link rel="icon" type="image/png" href="../Pictures/D-Logo.png" />
+    <title>Log In</title>
 </head>
 <body>
 
-    <div id="FormBorder">
-        <form action="../ServerSide/ValidateUser.php" method="post">
-            <div id="loginField">
-                <p>email: <br /><input type="text" name="login" /></p>
-            </div>
-            <div id="passwordField">
-                <p>passwort: <input type="password" name="password" /></p>
-            </div>
-            <div id="SubmitButton">
-                <p><input type="submit"  /></p>
-            </div>
-        </form>
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+          
+          <img src="../Pictures/logo.png" alt="Avatar" class="avatar">
+        </div>
+    
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+    
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button type="submit">Login</button>
+          
+        </div>
+    
+        <div class="container" >
+         <a href=signUpForm.html class="SignInButton">Sign In</a>
+          <span class="psw">Forgot <a href="#" class="navText">password?</a></span>
+        </div>
+      </form>
     </div>
 
 </body>
