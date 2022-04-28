@@ -116,6 +116,7 @@ button:hover {
 .section {
   width: 100%;
 	min-height: 100vh;
+  background-color: #ddd;
 }
 
 .container{
