@@ -15,12 +15,13 @@ class ValidateUser{
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT UserPassword FROM UserAccounts WHERE UserLogin = '$userLogin'";
+        $sql = "SELECT UserPassword FROM `UserAccounts` WHERE UserLogin = '$userLogin'";
         $hash = $conn->query($sql);
-
+        echo $hash;
         $conn->close();
 
-        if (password_verify($userPassword, $hash)) {
+        if (password_verify($userPassword,$hash)) {
+
             if($this->getUserType($userLogin) == "admin"){
                 include "AdminPage.php";
             }
@@ -50,7 +51,7 @@ class ValidateUser{
             }
 
             $sql = "SELECT User_ID FROM UserAccounts WHERE userLogin = '$userLogin'";
-            $result = $conn->query($sql);
+
 
             $conn->close();
 
