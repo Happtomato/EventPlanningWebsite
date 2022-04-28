@@ -26,6 +26,10 @@ header {
   margin-right: auto;
   font-size: 0.1em;
 }
+#navButtons{
+  border-bottom: 3px solid;
+  border-color: #125E8A;  
+}
 
 header li {
   list-style: none;
@@ -45,6 +49,7 @@ header a:hover {
 img{
   width: 100em;
 }
+
 nav{
   border-bottom: 1px solid;
   border-color: #7B38F5;
@@ -133,7 +138,6 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
-
 
 
 /* Add Zoom Animation */
