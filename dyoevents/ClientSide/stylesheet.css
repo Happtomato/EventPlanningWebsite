@@ -1,34 +1,34 @@
 html,
 body {
-    height: 100%;
-    width: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    padding: 0;
-    margin: 0;
-    /*overflow: hidden !important;*/
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-decoration: none;
+  height: 100%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0;
+  margin: 0;
+  /*overflow: hidden !important;*/
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-decoration: none;
 
 }
+
 /*header*/
 header {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  padding: 20px 50px;
-
   font-size: 2em;
 }
 
 #nav-title {
   margin-right: auto;
   font-size: 0.1em;
+  align-self:flex-start;
 }
-#navButtons{
+
+#navButtons {
   border-bottom: 3px solid;
-  border-color: #125E8A;  
+  border-color: #125E8A;
 }
 
 header li {
@@ -39,48 +39,53 @@ header li {
 
 header a {
   text-decoration: none;
-  
   transition: all 0.3s ease 0s;
 }
 
 header a:hover {
   color: #7B38F5;
 }
-img{
+
+img {
   width: 100em;
 }
 
-nav{
+nav {
   border-bottom: 1px solid;
   border-color: #7B38F5;
- text-decoration: none;
+  text-decoration: none;
 }
 
 /*main*/
-main{
+main {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 50px;
   font-size: 1em;
 }
-.logInButtons{
+
+.logInButtons {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 100px;
-  
+
   font-size: 2em;
 }
-.navText{
+
+.navText {
   font-style: none;
   text-decoration: none;
   color: #555;
 }
-.navText:hover{
+
+.navText:hover {
   color: #7B38F5;
 }
-input[type=text], input[type=password] {
+
+input[type=text],
+input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -91,7 +96,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-  background-color: #7B38F5 ;
+  background-color: #7B38F5;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -112,10 +117,11 @@ button:hover {
   background-color: grey;
   color: white;
   text-decoration: none;
-  
+
 }
-.SignInButton:hover{
-  color:white;
+
+.SignInButton:hover {
+  color: white;
   background-color: darkgray;
 }
 
@@ -128,6 +134,7 @@ button:hover {
 
 img.avatar {
   width: 40%;
+  text-align: right;
 }
 
 .container {
@@ -147,20 +154,33 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
 }
-  
+
 @keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
 }
 
 
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
+    display: block;
+    float: none;
+  }
+  img{
+    width: 100%;
   }
  
 }

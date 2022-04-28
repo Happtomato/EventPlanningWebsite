@@ -34,10 +34,11 @@ function deletePicture(){
 <body>
 <div id="navButtons">
     <ul>
+        
         <li><a href="">Profile</a></li>
         <li><a href="">Galery</a></li>
         <li><a href="">Shop</a></li>
-        <li><a href="">Shop</a></li>
+        <li><a href="shop.php">Shop</a></li>
         <li><a href="">Shop</a></li>
         <li><a href="">Shop</a></li>
 
