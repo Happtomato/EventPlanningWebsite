@@ -23,7 +23,8 @@ header {
 #nav-title {
   margin-right: auto;
   font-size: 0.1em;
-  align-self:flex-start;
+  align-self: flex-start;
+  padding: 20px 20px;
 }
 
 #navButtons {
@@ -110,6 +111,24 @@ button:hover {
   opacity: 0.8;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: blanchedalmond;
+}
+
+footer a {
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+}
+
+.icons {
+  size: 30px;
+  width: 30px;
+  height: auto;
+}
+
 
 .SignInButton {
   width: auto;
@@ -179,8 +198,9 @@ span.psw {
     display: block;
     float: none;
   }
-  img{
+
+  img {
     width: 100%;
   }
- 
+
 }
