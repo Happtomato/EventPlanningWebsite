@@ -2,7 +2,7 @@
 
 class ValidateUser{
 
-    function userIsValid(){
+    function userIsValid($userLogin,$userPassword){
 
         //create connection to db
         require_once("dbcontroller.php");
@@ -14,9 +14,6 @@ class ValidateUser{
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-
-        $userLogin = $_POST['login'];
-        $userPassword = $_POST['password'];
 
         $sql = "SELECT UserPassword FROM UserAccounts WHERE UserLogin $userLogin";
         $hash = $conn->query($sql);
