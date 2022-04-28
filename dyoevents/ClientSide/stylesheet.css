@@ -115,12 +115,17 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: blanchedalmond;
 }
 
 footer a {
   text-decoration: none;
   transition: all 0.3s ease 0s;
+}
+
+footer li {
+  list-style: none;
+  display: inline-block;
+  padding-left:20px;
 }
 
 .icons {
