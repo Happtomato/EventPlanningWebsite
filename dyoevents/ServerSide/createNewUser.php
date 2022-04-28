@@ -20,6 +20,7 @@ function createUser($userLogin,$number,$userPassword)
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
+        include "../index.html";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
