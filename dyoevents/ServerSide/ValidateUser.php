@@ -5,7 +5,7 @@ class ValidateUser{
     function userIsValid($userLogin,$userPassword){
 
         //create connection to db
-        require_once("dbcontroller.php");
+        require_once("DBController.php");
         $db_handle = new DBController();
 
         $conn = $db_handle->connectDB();
@@ -15,7 +15,7 @@ class ValidateUser{
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT UserPassword FROM UserAccounts WHERE UserLogin $userLogin";
+        $sql = "SELECT UserPassword FROM UserAccounts WHERE UserLogin = '$userLogin'";
         $hash = $conn->query($sql);
 
         $conn->close();
@@ -49,7 +49,7 @@ class ValidateUser{
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT User_ID FROM UserAccounts WHERE userLogin $userLogin";
+            $sql = "SELECT User_ID FROM UserAccounts WHERE userLogin = '$userLogin'";
             $result = $conn->query($sql);
 
             $conn->close();
@@ -72,7 +72,7 @@ class ValidateUser{
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT userType FROM UserAccounts WHERE userLogin $userLogin";
+            $sql = "SELECT userType FROM UserAccounts WHERE userLogin = '$userLogin'";
             $result = $conn->query($sql);
 
             $conn->close();
