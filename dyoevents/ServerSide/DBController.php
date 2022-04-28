@@ -33,4 +33,3 @@ class dbcontroller
         return $rowcount;
     }
 }
-?>
