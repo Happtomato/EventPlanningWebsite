@@ -97,7 +97,6 @@ if(!empty($_GET["action"])) {
             <li><a href="../ServerSide/MemberPage.php">Home</a></li>
             <li><a href="../ServerSide/Events.php">Events</a></li>
             <li><a href="../ServerSide/pictures.php">Pictures</a></li>
-            <li><a href="../ClientSide/gallery.html">Gallery</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
             <li><a href="../ServerSide/profilePage">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
