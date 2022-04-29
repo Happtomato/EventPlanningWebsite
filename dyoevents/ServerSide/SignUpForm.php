@@ -35,6 +35,6 @@ if (!strcmp($password,$confirmedPW)) {
     $conn->close();
 } else {
     echo "The Passwords do not match!";
-    include_once('../ClientSide/signUpForm.html');
+    header("Location: ../ClientSide/LogIn.html");
 
 }
