@@ -1,6 +1,11 @@
 <?php
 
+require_once ("currentUser.php");
 class ValidateUser{
+
+    public $user = null;
+
+
     function userIsValid($userLogin,$userPassword){
 
         //create connection to db
@@ -26,6 +31,8 @@ class ValidateUser{
 
 
             if($this->getUserType($userLogin) == "admin"){
+                $user = new currentUser($userLogin,$userPassword);
+
                 echo "admin da";
                 header("Location: AdminPage.php");
 
