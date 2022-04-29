@@ -1,5 +1,5 @@
 <?php
-require_once("dbcontroller.php");
+require_once("DBController.php");
 $db_handle = new DBController();
 
 function createEvent(){

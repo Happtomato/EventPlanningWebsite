@@ -26,11 +26,12 @@ class ValidateUser{
 
 
             if($this->getUserType($userLogin) == "admin"){
-                $this->user = new currentUser($userLogin,$userPassword);
+                echo "admin da";
                 header("Location: AdminPage.php");
 
             }
             else{
+                echo "user da";
                 header("Location: MemberPage.php");
             }
         } else {
