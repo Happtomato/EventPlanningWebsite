@@ -83,11 +83,28 @@ if(!empty($_GET["action"])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
     <style>
         html, body { overflow: visible !important; }
     </style>
 </HEAD>
 <BODY>
+
+<header>
+        <li><img id="nav-title" src="../Pictures/logo.png" sizes="20px"></li>
+        <!-- Nav Bar-->
+        <ul>
+            <li><a href="../ServerSide/MemberPage.php">Home</a></li>
+            <li><a href="../ServerSide/Events.php">Events</a></li>
+            <li><a href="../ServerSide/pictures.php">Pictures</a></li>
+            <li><a href="../ClientSide/gallery.html">Gallery</a></li>
+            <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
+            <li><a href="../ServerSide/profilePage">Profile</a></li>
+            <li><a href="../index.html">Log out</a></li>
+        </ul>
+        <!-- Nav Bar-->
+    </header>
+
 
 <main class="row" style="width: 100vw; height: 100vh;">
 
