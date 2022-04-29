@@ -79,7 +79,7 @@ if(!empty($_GET["action"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="phpStyle.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
@@ -196,19 +196,20 @@ if(!empty($_GET["action"])) {
         </div>
         <!-- List of Products -->
 
-        <div id="product-grid">
-            <div class="txt-heading">Products</div>
-            <?php
-            $product_array = $db_handle->runQuery("SELECT * FROM inventory ORDER BY Item_ID ASC");
-            if (!empty($product_array)) {
-                foreach($product_array as $key=>$value){
-                    ?>
-                    <div class="product-item">
-                        <form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["ItemCode"]; ?>">
-                            <!-- <div class="product-image"><img src="<?php echo $product_array[$key]["ItemImage"]; ?>"></div> -->
+                            <div id="product-grid">
+                                <div class="txt-heading">Products</div>
+                                <?php
+                                $product_array = $db_handle->runQuery("SELECT * FROM inventory ORDER BY Item_ID ASC");
+                                if (!empty($product_array)) {
+                                    foreach($product_array as $key=>$value){
+                                        ?>
+                                        <div class="product-item">
+                                            <form method="post" action="shop.php?action=add&code=<?php echo $product_array[$key]["ItemCode"]; ?>">
+                            <!-- <div class="product-image"><img src="<?php echo $product_array[$key]["ProductImage"]; ?>"></div> -->
                             <div class="product-tile-footer">
-                                <div class="product-title"><?php echo $product_array[$key]["ItemName"]; ?></div>
-                                <div class="product-price"><?php echo $product_array[$key]["ItemPrice"]."fr"; ?></div>
+                                <div class="product-title"><?php echo $product_array[$key]["ProductName"]; ?></div>
+                                <div class="product-price"><?php echo $product_array[$key]["ProductPrice"]."fr"; ?></div>
+                                <div class="product-price"><?php echo $product_array[$key]["ProductDescription"]."fr"; ?></div>
                                 <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
                             </div>
                         </form>
