@@ -71,7 +71,7 @@ if (!empty($_GET["action"])) {
 <HTML>
 
 <HEAD>
-    <TITLE>Simple PHP Shopping Cart</TITLE>
+    <TITLE>Shopping Cart</TITLE>
     <link href="phpStyle.css" type="text/css" rel="stylesheet" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -170,6 +170,7 @@ if (!empty($_GET["action"])) {
 
                     <a id="btnEmpty" href="index.php?action=checkout">Checkout</a>
 
+<<<<<<< Updated upstream
                 <?php
                 } else {
                 ?>
@@ -179,6 +180,55 @@ if (!empty($_GET["action"])) {
                 ?>
             </div>
             <!-- List of Products -->
+=======
+            <a id="btnEmpty" href="shop.php?action=empty">Empty Cart</a>
+            <?php
+            if(isset($_SESSION["cart_item"])){
+                $total_quantity = 0;
+                $total_price = 0;
+                ?>
+                <table class="tbl-cart" cellpadding="10" cellspacing="1">
+                    <tbody>
+                    <tr>
+                        <th style="text-align:left;">Name</th>
+                        <th style="text-align:left;">Code</th>
+                        <th style="text-align:right;" width="5%">Quantity</th>
+                        <th style="text-align:right;" width="10%">Unit Price</th>
+                        <th style="text-align:right;" width="10%">Price</th>
+                        <th style="text-align:center;" width="5%">Remove</th>
+                    </tr>
+                    <?php
+                    foreach ($_SESSION["cart_item"] as $item){
+                        $item_price = $item["quantity"]*$item["price"];
+                        ?>
+                        <!-- List the item in the shopping cart -->
+                        <tr>
+                            <td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+                            <td><?php echo $item["code"]; ?></td>
+                            <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                            <td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
+                            <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
+                            <!-- button remove item -->
+                            <td style="text-align:center;"><a href="shop.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="../Pictures/icon-delete.png" alt="Remove Item" /></a></td>
+                        </tr>
+                        <?php
+                        $total_quantity += $item["quantity"];
+                        $total_price += ($item["price"]*$item["quantity"]);
+                    }
+                    ?>
+
+                    <tr>
+                        <!-- display the total amount -->
+                        <td colspan="2" align="right">Total:</td>
+                        <td align="right"><?php echo $total_quantity; ?></td>
+                        <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <a id="btnEmpty" href="shop.php?action=checkout">Checkout</a>
+>>>>>>> Stashed changes
 
             <div id="product-grid">
                 <div class="txt-heading">Products</div>
@@ -199,7 +249,35 @@ if (!empty($_GET["action"])) {
                             </form>
                         </div>
                 <?php
+<<<<<<< Updated upstream
                     }
+=======
+            }
+            ?>
+        </div>
+        <!-- List of Products -->
+
+                            <div id="product-grid">
+                                <div class="txt-heading">Products</div>
+                                <?php
+                                $product_array = $db_handle->runQuery("SELECT * FROM Articles ORDER BY Product_ID ASC");
+                                if (!empty($product_array)) {
+                                    foreach($product_array as $key=>$value){
+                                        ?>
+
+                                        <div class="product-item">
+                                            <form method="post" action="shop.php?action=add&code=<?php echo $value["ItemCode"]; ?>">
+                            <!-- <div class="product-image"><img src="<?php echo $value["ProductImage"]; ?>"></div> -->
+                            <div class="product-tile-footer">
+                                <div class="product-title"><?php echo $value["ProductName"]; ?></div>
+                                <div class="product-price"><?php echo $value["ProductPrice"]."fr"; ?></div>
+                                <div class="product-price"><?php echo $value["ProductDescription"]; ?></div>
+                                <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+                            </div>
+                        </form>
+                    </div>
+                    <?php
+>>>>>>> Stashed changes
                 }
                 ?>
             </div>
