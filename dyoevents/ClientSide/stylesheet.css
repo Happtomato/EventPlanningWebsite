@@ -257,7 +257,6 @@ span.psw {
   }
 }
 
-
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
