@@ -26,7 +26,7 @@ if (!strcmp($password,$confirmedPW)) {
                     ('$login','$number','$hashedPW','user' )";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        header("Location: ../ClientSide/LogIn.html");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -34,7 +34,5 @@ if (!strcmp($password,$confirmedPW)) {
     //close connection
     $conn->close();
 } else {
-    echo "The Passwords do not match!";
-    header("Location: ../ClientSide/LogIn.html");
-
+    header("Location: ../ClientSide/signUpForm.html");
 }
