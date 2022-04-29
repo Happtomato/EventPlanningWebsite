@@ -21,6 +21,7 @@ function deletePicture(){
 
 }
 
+
 ?>
 <!doctype html>
 <html lang="en">
