@@ -121,6 +121,11 @@ body {
     margin: 10px 0px;
 }
 
+.btnRemoveAction{
+    width: 10px;
+    height: 10px;
+}
+
 .btnAddAction {
     padding: 5px 10px;
     margin-left: 5px;
