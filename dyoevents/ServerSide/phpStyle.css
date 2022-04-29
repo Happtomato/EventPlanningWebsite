@@ -12,48 +12,262 @@ body {
     text-decoration: none;
 
 }
+
 /*header*/
 header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 20px 50px;
-  font-size: 2em;
+    display: flex;
+    align-items: center;
+    font-size: 2em;
 }
 
 #nav-title {
-  margin-right: auto;
-  font-size: 0.1em;
+    margin-right: auto;
+    font-size: 0.1em;
+    align-self: flex-start;
+    padding: 20px 20px;
 }
-#navButtons{
-  border-bottom: 3px solid;
-  border-color: #125E8A;  
+
+#navButtons {
+    border-bottom: 3px solid;
+    border-color: #125E8A;
 }
 
 header li {
-  list-style: none;
-  display: inline-block;
-  padding: 0 20px;
+    list-style: none;
+    display: inline-block;
+    padding: 0 20px;
 }
 
 header a {
-  text-decoration: none;
-  
-  transition: all 0.3s ease 0s;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
 }
 
 header a:hover {
-  color: #7B38F5;
-}
-img{
-  width: 100em;
+    color: #7B38F5;
 }
 
-nav{
-  border-bottom: 1px solid;
-  border-color: #7B38F5;
- text-decoration: none;
+img {
+    width: 100em;
 }
+
+nav {
+    border-bottom: 1px solid;
+    border-color: #7B38F5;
+    text-decoration: none;
+}
+
+/*main*/
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 50px;
+    font-size: 1em;
+}
+
+.logInButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 100px;
+
+    font-size: 2em;
+}
+
+.navText {
+    font-style: none;
+    text-decoration: none;
+    color: #555;
+}
+
+.navText:hover {
+    color: #7B38F5;
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #7B38F5;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* About us start*/
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ddd;
+}
+
+.container{
+    width: 80%;
+    display: block;
+    margin:auto;
+    padding-top: 100px;
+}
+.content-section{
+    float: left;
+    width: 50%;
+}
+.image-section{
+    float: right;
+    width: 45%;
+}
+.image-section img{
+    width: 100%;
+    height: auto;
+}
+.content-section .title{
+    font-size: 28px;
+}
+.content-section .content h3{
+    margin-top: 15px;
+    font-size: 21px;
+}
+.content-section .content p{
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+.content-section .social{
+    margin: 40px 40px;
+}
+.content-section .social i{
+    color:#7B38F5;
+    font-size: 30px;
+    padding:0px 10px;
+}
+.content-section .social i:hover{
+    color:gray;
+}
+@media screen and (max-width: 768px){
+    .container{
+        width: 80%;
+        display: block;
+        margin:auto;
+        padding-top:50px;
+    }
+    .content-section{
+        width:100%;
+        display: block;
+        margin:auto;
+    }
+    .image-section{
+        float:none;
+        width:100%;
+
+    }
+    .image-section img{
+        width: 100%;
+        height: auto;
+        display: block;
+        margin:auto;
+    }
+    .content-section .title{
+        text-align: center;
+        font-size: 19px;
+    }
+    .content-section .social{
+        text-align: center;
+    }
+}
+
+/* About us end*/
+
+
+.SignInButton {
+    width: auto;
+    padding: 10px 18px;
+    background-color: grey;
+    color: white;
+    text-decoration: none;
+
+}
+
+.SignInButton:hover {
+    color: white;
+    background-color: darkgray;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 40%;
+    text-align: right;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
 
 /*main*/
 main{
