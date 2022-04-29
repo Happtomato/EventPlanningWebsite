@@ -167,7 +167,7 @@ if(!empty($_GET["action"])) {
                     ?>
                     <div class="product-item">
                         <form method="post" action="shop.php?action=add&code=<?php echo $value["Product_ID"]; ?>">
-                            <!-- <div class="product-image"><img src="<?php echo $value["ProductImage"]; ?>"></div> -->
+                            <div class="product-image"><img src="<?php echo $value["ProductImage"]; ?>"></div>
                             <div class="product-tile-footer">
                                 <div class="product-title"><?php echo $value["ProductName"]; ?></div>
                                 <div class="product-price"><?php echo $value["ProductPrice"]."fr"; ?></div>
