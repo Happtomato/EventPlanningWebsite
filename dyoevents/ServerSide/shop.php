@@ -74,16 +74,12 @@ if(!empty($_GET["action"])) {
 <HTML>
 <HEAD>
     <TITLE>Simple PHP Shopping Cart</TITLE>
-    <link href="phpStyle.css" type="text/css" rel="stylesheet" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
+    <link href="phpStyle.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="../Pictures/D-Logo.png" />
     <style>
         html, body { overflow: visible !important; }
     </style>
