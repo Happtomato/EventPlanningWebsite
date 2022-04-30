@@ -73,16 +73,14 @@ if(!empty($_GET["action"])) {
 
 <HTML>
 <HEAD>
-    <TITLE>Simple PHP Shopping Cart</TITLE>
+    <TITLE>Shop</TITLE>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="phpStyle.css" type="text/css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="../Pictures/D-Logo.png" />
-    <style>
-        html, body { overflow: visible !important; }
-    </style>
+    
 </HEAD>
 <BODY>
 
@@ -101,7 +99,7 @@ if(!empty($_GET["action"])) {
     </header>
 
 
-<main class="row" style="width: 100vw; height: 100vh;">
+<main class="row">
 
     <div class="col-2" id="index-left-img">
 
@@ -179,12 +177,22 @@ if(!empty($_GET["action"])) {
                     ?>
                     <div class="product-item">
                         <form method="post" action="shop.php?action=add&code=<?php echo $value["Product_ID"]; ?>">
-                            <div class="product-image"><img  src="<?php echo $value["ProductImage"];?>"></div>
+                            <div><img class="product-image"  src="../Pictures/D-Logo.png"><div class="product-price"><?php echo $value["ProductPrice"]."fr"; ?></div></div>
+                            
                             <div class="product-tile-footer">
                                 <div class="product-title"><?php echo $value["ProductName"]; ?></div>
-                                <div class="product-price"><?php echo $value["ProductPrice"]."fr"; ?></div>
+                                
                                 <div class="product-description"><?php echo $value["ProductDescription"]; ?></div>
-                                <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+                                <div class="cart-action">
+                                    <select class="product-quantity" name="quantity"> 
+                                        <option value = "1">1</option>
+                                        <option value = "2">2</option>
+                                        <option value = "3">3</option>
+                                        <option value = "4">4</option>
+                                        <option value = "5">5</option>
+                                        <option value = "6">6</option>
+                                    </select>
+                                <input type="submit" value="Add to Cart" class="btnAddAction" /></div>
                             </div>
                         </form>
                     </div>
