@@ -36,7 +36,7 @@ $db_handle = new DBController();
         foreach($product_array as $key=>$value){
             ?>
             <div class="product-item">
-                    <div class="product-image"><img src="../Pictures/D-Logo.png"></div>
+                    <div class="product-image"><img src="<?php echo $product_array[$key]["PictureURL"]; ?>"></div>
                     <div class="product-tile-footer">
                         <div class="product-title"><?php echo $product_array[$key]["PictureName"]; ?></div>
                     </div>
