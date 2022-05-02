@@ -1,5 +1,5 @@
 <?php
-require_once("dbcontroller.php");
+require_once("DBController.php");
 $db_handle = new DBController();
 ?>
 <!doctype html>
@@ -20,25 +20,24 @@ $db_handle = new DBController();
         <ul>
             <li><a href="../ServerSide/MemberPage.php">Home</a></li>
             <li><a href="../ServerSide/Events.php">Events</a></li>
-            <li><a href="../ClientSide/gallery.html">Gallery</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
             <li><a href="../ServerSide/shop.php">Tickets</a></li>
-            <li><a href="../ServerSide/profilePage">Profile</a></li>
+            <li><a href="../ServerSide/profilePage.php">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
         </ul>
         <!-- Nav Bar-->
     </header>
 <div id="product-grid">
-    <div class="txt-heading">Products</div>
+    <div class="txt-heading">Pictures</div>
     <?php
-    $product_array = $db_handle->runQuery("SELECT * FROM Pictures ORDER BY Item_ID ASC");
+    $product_array = $db_handle->runQuery("SELECT * FROM Pictures ORDER BY Picture_ID ASC");
     if (!empty($product_array)) {
         foreach($product_array as $key=>$value){
             ?>
             <div class="product-item">
-                    <div class="product-image"><img src="<?php echo $product_array[$key]["PictureURL"]; ?>"></div>
+                    <div class="product-image"><img src="<?php echo $value["PictureURL"]; ?>"></div>
                     <div class="product-tile-footer">
-                        <div class="product-title"><?php echo $product_array[$key]["PictureName"]; ?></div>
+                        <div class="product-title"><?php echo $value["PictureName"]; ?></div>
                     </div>
             </div>
             <?php

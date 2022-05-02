@@ -1,6 +1,5 @@
 <?php
-require_once("DBControlle
-r.php");
+require_once("DBController.php");
 $db_handle = new DBController();
 
 if($_SESSION["userType"] != "Admin") {
@@ -51,7 +50,7 @@ function deletePicture(){
             <li><a href="../ServerSide/pictures.php">Pictures</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
             <li><a href="../ServerSide/shop.php">Tickets</a></li>
-            <li><a href="../ServerSide/profilePage">Profile</a></li>
+            <li><a href="../ServerSide/profilePage.php">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
         </ul>
         <!-- Nav Bar-->
