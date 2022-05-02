@@ -1,12 +1,13 @@
 <?php
 require_once("DBController.php");
 $db_handle = new DBController();
-
+/*
 if($_SESSION["userType"] != "Admin") {
     session_destroy();
     header("Location: ../ClientSide/LogIn.html");
 }
 
+*/
 function createEvent($eventName,$eventDate,$event){
 
 }
@@ -52,6 +53,8 @@ function deletePicture(){
             <li><a href="../ServerSide/shop.php">Tickets</a></li>
             <li><a href="../ServerSide/profilePage.php">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
+            <li><a href="uploadFileBox.html">Upload</a></li>
+
         </ul>
         <!-- Nav Bar-->
     </header>
