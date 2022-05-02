@@ -19,6 +19,7 @@ function createUser($userLogin,$number,$userPassword)
     $sql = "INSERT INTO UserAccounts(`UserLogin`, `phoneNumber`, `UserPassword`, `userType`) VALUES ('$userLogin','$number','$hashedPW','user' ";
 
     if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
         include "../index.html";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

@@ -1,9 +1,9 @@
 <?php
 
 class ValidateUser{
+
     function userIsValid($userLogin,$userPassword){
 
-        echo "test";
         //create connection to db
         require_once("DBController.php");
         $db_handle = new DBController();
@@ -14,27 +14,18 @@ class ValidateUser{
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        echo "test";
 
         $sql = "SELECT UserPassword FROM `UserAccounts` WHERE UserLogin = '$userLogin'";
-        $result = $conn->query($sql);
+        $hash = $conn->query($sql);
+        echo $hash;
         $conn->close();
 
-        echo "test";
-        $hashArray = $result->fetch_all();
-        echo "test";
-        $hash = $hashArray[0][0];
-        echo "test";
-        echo $hash;
         if (password_verify($userPassword,$hash)) {
 
             if($this->getUserType($userLogin) == "admin"){
-                $this->user = new currentUser($userLogin,$userPassword);
                 include "AdminPage.php";
-
             }
             else{
-
                 include "MemberPage.php";
             }
         } else {
