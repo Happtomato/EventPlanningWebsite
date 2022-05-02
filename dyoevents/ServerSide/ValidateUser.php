@@ -19,6 +19,7 @@ class ValidateUser{
             die("Connection failed: " . $conn->connect_error);
         }
 
+        //now working
 
         $sql = "SELECT UserPassword FROM `UserAccounts` WHERE UserLogin = '$userLogin'";
         $result = $conn->query($sql);
