@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("dbcontroller.php");
+require_once("DBController.php");
 $db_handle = new DBController();
 
 //manipulate the shopping cart
@@ -13,17 +13,17 @@ if(!empty($_GET["action"])) {
         //add a new item to the shopping cart
         case "add":
             if(!empty($_POST["quantity"])) {
-                $productByCode = $db_handle->runQuery("SELECT * FROM inventory WHERE ItemCode='" . $_GET["code"] . "'");
-                $itemArray = array($productByCode[0]["ItemCode"]=>array('name'=>$productByCode[0]["ItemName"], 'code'=>$productByCode[0]["ItemCode"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["ItemPrice"], 'image'=>$productByCode[0]["ItemImage"]));
+                $productByCode = $db_handle->runQuery("SELECT * FROM Articles WHERE Product_ID ='" . $_GET["code"] . "'");
+                $itemArray = array($productByCode[0]["Product_ID"]=>array('name'=>$productByCode[0]["ProductName"], 'code'=>$productByCode[0]["Product_ID"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["ProductPrice"], 'image'=>$productByCode[0]["ProductImage"]));
 
                 //look if any item is in the basket
                 if(!empty($_SESSION["cart_item"])) {
                     //look if item already in the basket
-                    if(in_array($productByCode[0]["ItemCode"],array_keys($_SESSION["cart_item"]))) {
+                    if(in_array($productByCode[0]["Product_ID"],array_keys($_SESSION["cart_item"]))) {
                         //go through array
                         foreach($_SESSION["cart_item"] as $k => $v) {
                             //search for item
-                            if($productByCode[0]["ItemCode"] == $k) {
+                            if($productByCode[0]["Product_ID"] == $k) {
                                 //if empty set quantity 0
                                 if(empty($_SESSION["cart_item"][$k]["quantity"])) {
                                     $_SESSION["cart_item"][$k]["quantity"] = 0;
@@ -73,61 +73,33 @@ if(!empty($_GET["action"])) {
 
 <HTML>
 <HEAD>
-    <TITLE>Simple PHP Shopping Cart</TITLE>
-    <link href="phpStyle.css" type="text/css" rel="stylesheet" />
+    <TITLE>Shop</TITLE>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheet.css" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#navbarDropdown").click(function() {
-                $(".dropdown-menu").toggle();
-            })
-        });
-    </script>
-    <style>
-        html, body { overflow: visible !important; }
-    </style>
+    <link href="phpStyle.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="../Pictures/D-Logo.png" />
+    
 </HEAD>
 <BODY>
 
 <header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a class="navbar-brand" href="/index.html">
-            <img src="/Pictures/c. b..svg" width="30" height="30" alt="">
-        </a>
+        <li><img id="nav-title" src="../Pictures/logo.png" sizes="20px"></li>
+        <!-- Nav Bar-->
+        <ul>
+            <li><a href="../ServerSide/MemberPage.php">Home</a></li>
+            <li><a href="../ServerSide/Events.php">Events</a></li>
+            <li><a href="../ServerSide/pictures.php">Pictures</a></li>
+            <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
+            <li><a href="../ServerSide/profilePage">Profile</a></li>
+            <li><a href="../index.html">Log out</a></li>
+        </ul>
+        <!-- Nav Bar-->
+    </header>
 
-        <div class="collapse navbar-collapse width">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item nav-item2 btn-hovereffect rounded-pill"><a class="nav-link" href="/index.html">Welcome</a></li>
-                <li class="nav-item nav-item2 btn-hovereffect rounded-pill active-btn"><a class="nav-link" href="/phpscripts/index.php">Shop</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto icon-resize">
-                <li class="dropdown nav-item nav-item2" style="margin-top: 7px;">
-                    <a href=""><img src="/Pictures/Icon awesome-shopping-basket.svg" alt="" style="max-width: 80%; max-height:80%"></a>
-                </li>
-                <li class="nav-item dropdown nav-item2" style="margin-top: 4px;">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="/Pictures/Icon feather-menu.svg" alt="" style="max-width: 80%; max-height:80%">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/index.html">Welcome</a>
-                        <a class="dropdown-item" href="/phpscripts/index.php">Shop</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
-<main class="row" style="width: 100vw; height: 100vh;">
+<main class="row">
 
     <div class="col-2" id="index-left-img">
 
@@ -138,7 +110,7 @@ if(!empty($_GET["action"])) {
         <div id="shopping-cart">
             <div class="txt-heading">Shopping Cart</div>
 
-            <a id="btnEmpty" href="index.php?action=empty">Empty Cart</a>
+            <a id="btnEmpty" href="shop.php?action=empty">Empty Cart</a>
             <?php
             if(isset($_SESSION["cart_item"])){
                 $total_quantity = 0;
@@ -163,10 +135,10 @@ if(!empty($_GET["action"])) {
                             <td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
                             <td><?php echo $item["code"]; ?></td>
                             <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-                            <td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
-                            <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
+                            <td  style="text-align:right;"><?php echo "Fr ".$item["price"]; ?></td>
+                            <td  style="text-align:right;"><?php echo "Fr ". number_format($item_price,2); ?></td>
                             <!-- button remove item -->
-                            <td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+                            <td style="text-align:center;"><a href="shop.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="../Pictures/icon-delete.png" alt="Remove Item" style="width: 25px" /></a></td>
                         </tr>
                         <?php
                         $total_quantity += $item["quantity"];
@@ -178,13 +150,13 @@ if(!empty($_GET["action"])) {
                         <!-- display the total amount -->
                         <td colspan="2" align="right">Total:</td>
                         <td align="right"><?php echo $total_quantity; ?></td>
-                        <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+                        <td align="right" colspan="2"><strong><?php echo "Fr ".number_format($total_price, 2); ?></strong></td>
                         <td></td>
                     </tr>
                     </tbody>
                 </table>
 
-                <a id="btnEmpty" href="index.php?action=checkout">Checkout</a>
+                <a id="btnEmpty" href="shop.php?action=checkout">Checkout</a>
 
                 <?php
             } else {
@@ -199,17 +171,28 @@ if(!empty($_GET["action"])) {
         <div id="product-grid">
             <div class="txt-heading">Products</div>
             <?php
-            $product_array = $db_handle->runQuery("SELECT * FROM inventory ORDER BY Item_ID ASC");
+            $product_array = $db_handle->runQuery("SELECT * FROM Articles ORDER BY Product_ID ASC");
             if (!empty($product_array)) {
                 foreach($product_array as $key=>$value){
                     ?>
                     <div class="product-item">
-                        <form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["ItemCode"]; ?>">
-                            <!-- <div class="product-image"><img src="<?php echo $product_array[$key]["ItemImage"]; ?>"></div> -->
+                        <form method="post" action="shop.php?action=add&code=<?php echo $value["Product_ID"]; ?>">
+                            <div><img class="product-image"  src="../Pictures/D-Logo.png"><div class="product-price"><?php echo $value["ProductPrice"]."fr"; ?></div></div>
+                            
                             <div class="product-tile-footer">
-                                <div class="product-title"><?php echo $product_array[$key]["ItemName"]; ?></div>
-                                <div class="product-price"><?php echo $product_array[$key]["ItemPrice"]."fr"; ?></div>
-                                <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+                                <div class="product-title"><?php echo $value["ProductName"]; ?></div>
+                                
+                                <div class="product-description"><?php echo $value["ProductDescription"]; ?></div>
+                                <div class="cart-action">
+                                    <select class="product-quantity" name="quantity"> 
+                                        <option value = "1">1</option>
+                                        <option value = "2">2</option>
+                                        <option value = "3">3</option>
+                                        <option value = "4">4</option>
+                                        <option value = "5">5</option>
+                                        <option value = "6">6</option>
+                                    </select>
+                                <input type="submit" value="Add to Cart" class="btnAddAction" /></div>
                             </div>
                         </form>
                     </div>

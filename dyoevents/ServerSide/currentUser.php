@@ -9,7 +9,6 @@ class currentUser
     {
         $this->userLogin = $login;
         $this->userPassword = $password;
-
     }
 
     public function getUserLogin()
