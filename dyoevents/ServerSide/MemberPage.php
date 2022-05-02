@@ -1,5 +1,10 @@
 <?php
 
+if($_SESSION["userType"] != "User") {
+    //header("Location: ../ClientSide/LogIn.html");
+}
+
+
 ?>
 
 
@@ -24,7 +29,7 @@
             <li><a href="../ServerSide/pictures.php">Pictures</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
             <li><a href="../ServerSide/shop.php">Tickets</a></li>
-            <li><a href="../ServerSide/profilePage">Profile</a></li>
+            <li><a href="../ServerSide/profilePage.php">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
         </ul>
         <!-- Nav Bar-->

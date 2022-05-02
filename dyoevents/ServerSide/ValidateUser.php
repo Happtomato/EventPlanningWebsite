@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once ("currentUser.php");
 class ValidateUser{
 
@@ -34,12 +34,15 @@ class ValidateUser{
             if($this->getUserType($userLogin) == "admin"){
                 $user = new currentUser($userLogin,$userPassword);
 
-                echo "admin da";
+                $_SESSION["userType"] = "Admin";
+
                 header("Location: AdminPage.php");
 
             }
             else{
-                echo "user da";
+
+                $_SESSION["userType"] = "User";
+
                 header("Location: MemberPage.php");
             }
         } else {

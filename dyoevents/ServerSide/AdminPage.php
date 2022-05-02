@@ -1,17 +1,23 @@
 <?php
-require_once("DBController.php");
+require_once("DBControlle
+r.php");
 $db_handle = new DBController();
 
-function createEvent(){
+if($_SESSION["userType"] != "Admin") {
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
+}
+
+function createEvent($eventName,$eventDate,$event){
 
 }
-function createNewAdmin(){
+function createNewAdmin($username){
 
 }
-function deleteEvent(){
+function deleteEvent($eventName){
 
 }
-function deleteUser(){
+function deleteUser($username){
 
 }
 function uploadPicture(){
