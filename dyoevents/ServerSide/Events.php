@@ -1,5 +1,5 @@
 <?php
-require_once("dbcontroller.php");
+require_once("DBController.php");
 $db_handle = new DBController();
 ?>
 <!doctype html>
@@ -24,7 +24,7 @@ $db_handle = new DBController();
             <li><a href="../ServerSide/pictures.php">Pictures</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
             <li><a href="../ServerSide/shop.php">Tickets</a></li>
-            <li><a href="../ServerSide/profilePage">Profile</a></li>
+            <li><a href="../ServerSide/profilePage.php">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
         </ul>
         <!-- Nav Bar-->
@@ -59,9 +59,9 @@ $db_handle = new DBController();
     ?>
             <div class="event">
                 <div class="product-tile-footer">
-                    <div class="product-title"><?php echo $product_array[$key]["EventName"]; ?></div>
-                    <div class="product-title"><?php echo $product_array[$key]["EventDescription"]; ?></div>
-                    <div class="product-price"><?php echo $product_array[$key]["EventDate"] . "fr"; ?></div>
+                    <div class="product-title"><?php echo $value["EventName"]; ?></div>
+                    <div class="product-title"><?php echo $value["EventDescription"]; ?></div>
+                    <div class="product-price"><?php echo $value["EventDate"]."fr"; ?></div>
                 </div>
             </div>
     <?php

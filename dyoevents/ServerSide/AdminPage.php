@@ -2,17 +2,22 @@
 require_once("DBController.php");
 $db_handle = new DBController();
 
-function createEvent()
-{
+if($_SESSION["userType"] != "Admin") {
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
 }
-function createNewAdmin()
-{
+
+function createEvent($eventName,$eventDate,$event){
+
 }
-function deleteEvent()
-{
+function createNewAdmin($username){
+
 }
-function deleteUser()
-{
+function deleteEvent($eventName){
+
+}
+function deleteUser($username){
+
 }
 function uploadPicture()
 {
@@ -46,7 +51,7 @@ function deletePicture()
             <li><a href="../ServerSide/pictures.php">Pictures</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
             <li><a href="../ServerSide/shop.php">Tickets</a></li>
-            <li><a href="../ServerSide/profilePage">Profile</a></li>
+            <li><a href="../ServerSide/profilePage.php">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
         </ul>
         <!-- Nav Bar-->
