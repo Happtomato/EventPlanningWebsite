@@ -44,10 +44,10 @@ function deletePicture()
 
 <body>
     <header>
-        <li><img id="nav-title" src="../Pictures/logo.png" sizes="20px"></li>
+        <li><a href="../ServerSide/MemberPage.php"><img id="nav-title" src="../Pictures/logo.png" sizes="20px"></a></li>
         <!-- Nav Bar-->
         <ul class="nav-bar">
-            <li><a href="../ServerSide/MemberPage.php">Home</a></li>
+            
             <li><a href="../ServerSide/Events.php">Events</a></li>
             <li><a href="../ServerSide/pictures.php">Pictures</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>

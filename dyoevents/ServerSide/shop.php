@@ -76,7 +76,7 @@ if (!empty($_GET["action"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="phpStyle.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="../ClientSide/stylesheet.css" />
     <link rel="icon" type="image/png" href="../Pictures/D-Logo.png" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 
@@ -85,25 +85,26 @@ if (!empty($_GET["action"])) {
 <BODY>
 
     <header>
-        <li><img id="nav-title" src="../Pictures/logo.png" sizes="20px"></li>
+    <li><a href="../ServerSide/MemberPage.php"><img id="nav-title" src="../Pictures/logo.png" sizes="20px"></a></li>
         <!-- Nav Bar-->
         <ul class="nav-bar">
-            <li><a href="../ServerSide/MemberPage.php">Home</a></li>
-            <li><a href="../ServerSide/Events.php">Events</a></li>
+        <li><a href="../ServerSide/Events.php">Events</a></li>
             <li><a href="../ServerSide/pictures.php">Pictures</a></li>
             <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
+            <li><a href="../ServerSide/shop.php">Tickets</a></li>
             <li><a href="../ServerSide/profilePage.php">Profile</a></li>
             <li><a href="../index.html">Log out</a></li>
         </ul>
         <!-- Nav Bar-->
-        <!-- Nav Bar Mobile-->
-        <div class="dropdown">
+         <!-- Nav Bar Mobile-->
+         <div class="dropdown">
             <button class="dropdown-btn"><i class="fa fa-bars"></i></button>
             <div class="dropdown-content">
                 <a href="../ServerSide/MemberPage.php">Home</a>
                 <a href="../ServerSide/Events.php">Events</a>
                 <a href="../ServerSide/pictures.php">Pictures</a>
                 <a href="../ClientSide/AboutUs.html">About Us</a>
+                <a href="../ServerSide/shop.php">Tickets</a>
             </div>
         </div>
 
