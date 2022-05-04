@@ -16,25 +16,28 @@ body {
 /*header*/
 header {
   display: flex;
-  align-items: center;
+
   font-size: 2em;
 }
 
 #nav-title {
+
   margin-right: auto;
   font-size: 0.1em;
-  align-self: flex-start;
   padding: 20px 20px;
 }
 
 #navButtons {
+  justify-content: flex-end;
   border-bottom: 3px solid;
   border-color: #125E8A;
+  
 }
 
 header li {
   list-style: none;
   display: inline-block;
+  justify-content: flex-end ;
   padding: 0 20px;
 }
 
@@ -78,7 +81,7 @@ main {
 .navText {
   font-style: none;
   text-decoration: none;
-  color: #555;
+  color: rgb(0, 0, 0);
 }
 
 .navText:hover {
@@ -111,86 +114,161 @@ button:hover {
   opacity: 0.8;
 }
 
-/* About us start*/ 
+/* About us start*/
+
+.img-staufen {
+  margin-top: 100px;
+}
 
 .section {
   width: 100%;
-	min-height: 100vh;
+  min-height: 100vh;
   background-color: #ddd;
 }
 
-.container{
-	width: 80%;
-	display: block;
-	margin:auto;
-	padding-top: 100px;
+.container {
+  width: 85%;
+  display: block;
+  margin: auto;
+  padding-top: 100px;
 }
-.content-section{
-	float: left;
-	width: 50%;
+
+.content-section {
+  float: left;
+  width: 50%;
 }
-.image-section{
-	float: right;
-	width: 45%;
+
+.image-section {
+  float: right;
+  width: 45%;
 }
-.image-section img{
-	width: 100%;
-	height: auto;
+
+.image-section img {
+  width: 100%;
+  height: auto;
 }
-.content-section .title{
-	font-size: 28px;
+
+.content-section .title {
+  font-size: 28px;
 }
-.content-section .content h3{
-	margin-top: 15px;
-	font-size: 21px;
+
+.content-section .content h3 {
+  margin-top: 15px;
+  font-size: 21px;
 }
-.content-section .content p{
-	margin-top: 10px;
-	font-size: 18px;
+
+.content-section .content p {
+  margin-top: 10px;
+  font-size: 18px;
   line-height: 1.5;
 }
-.content-section .social{
-	margin: 40px 40px;
+
+.content-section .social {
+  margin: 40px 40px;
 }
-.content-section .social i{
-	color:#7B38F5;
-	font-size: 30px;
-	padding:0px 10px;
+
+.content-section .social i {
+  color: #7B38F5;
+  font-size: 30px;
+  padding: 0px 10px;
 }
-.content-section .social i:hover{
-	color:gray;
+
+.content-section .social i:hover {
+  color: gray;
 }
-@media screen and (max-width: 768px){
-	.container{
-	width: 80%;
-	display: block;
-	margin:auto;
-	padding-top:50px;
+
+/* Mobile Start*/
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80%;
+    display: block;
+    margin: auto;
+    padding-top: 50px;
+  }
+
+  .content-section {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  .image-section {
+    float: none;
+    width: 100%;
+
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+
+  .content-section .title {
+    text-align: center;
+    font-size: 19px;
+  }
+
+  .content-section .social {
+    text-align: center;
+  }
 }
-.content-section{
-	width:100%;
-	display: block;
-	margin:auto;
+
+.dropdown {
+  display: none;
 }
-.image-section{
-	float:none;
-	width:100%;
-	
+
+@media screen and (max-width: 1250px) {
+
+  #nav-title{
+    font-size: 2px;
+  }
+
+  .nav-bar {
+    display: none;
+  }
+
+  .dropdown {
+    display: block;
+    float: right;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 160px;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-btn {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 20px;
+    color: white;
+    border: none;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .dropdown-content a:hover {
+    background-color: lightgrey;
+    color: darkviolet;
+  }
+
 }
-.image-section img{
-	width: 100%;
-	height: auto;
-	display: block;
-	margin:auto;
-}
-.content-section .title{
-	text-align: center;
-	font-size: 19px;
-}
-.content-section .social{
-	text-align: center;
-}
-}
+
+/*Mobile End*/
 
 /* About us end*/
 
@@ -268,3 +346,161 @@ span.psw {
   }
 }
 
+/*main*/
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 50px;
+  font-size: 1em;
+}
+
+.logInButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 100px;
+
+  font-size: 2em;
+}
+
+.navText {
+  font-style: none;
+  text-decoration: none;
+  color: #555;
+}
+
+.navText:hover {
+  color: #7B38F5;
+}
+
+body {
+  font-family: Arial;
+  color: #211a1a;
+  font-size: 0.9em;
+}
+
+#shopping-cart {
+  margin: 40px;
+}
+
+#product-grid {
+  margin: 40px;
+}
+
+#shopping-cart table {
+  width: 100%;
+  background-color: #F0F0F0;
+}
+
+#shopping-cart table td {
+  background-color: #FFFFFF;
+}
+
+.txt-heading {
+  color: #211a1a;
+  border-bottom: 1px solid #E0E0E0;
+  overflow: auto;
+}
+
+#btnEmpty {
+  background-color: #ffffff;
+  border: #d00000 1px solid;
+  padding: 5px 10px;
+  color: #d00000;
+  float: right;
+  text-decoration: none;
+  border-radius: 3px;
+  margin: 10px 0px;
+}
+
+.btnRemoveAction {
+  width: 10px;
+  height: 10px;
+}
+
+.btnAddAction {
+  padding: 5px 10px;
+  margin-left: 5px;
+  background-color: #efefef;
+  border: #E0E0E0 1px solid;
+  color: #211a1a;
+  float: right;
+  text-decoration: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#product-grid .txt-heading {
+  margin-bottom: 18px;
+}
+
+.product-item {
+  float: left;
+  background: #ffffff;
+  margin: 30px 30px 0px 0px;
+  border: #E0E0E0 1px solid;
+}
+
+.product-image {
+  height: 1px;
+  width: 1px;
+  background-color: #FFF;
+}
+
+.clear-float {
+  clear: both;
+}
+
+.demo-input-box {
+  border-radius: 2px;
+  border: #CCC 1px solid;
+  padding: 2px 1px;
+}
+
+.tbl-cart {
+  font-size: 0.9em;
+}
+
+.tbl-cart th {
+  font-weight: normal;
+}
+
+.product-title {
+  margin-bottom: 20px;
+}
+
+.product-price {
+  float: left;
+}
+
+.cart-action {
+  float: right;
+}
+
+.product-quantity {
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: #E0E0E0 1px solid;
+}
+
+.product-tile-footer {
+  padding: 15px 15px 0px 15px;
+  overflow: auto;
+}
+
+.cart-item-image {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: #E0E0E0 1px solid;
+  padding: 5px;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.no-records {
+  text-align: center;
+  clear: both;
+  margin: 38px 0px;
+}
