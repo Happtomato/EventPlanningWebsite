@@ -1,6 +1,6 @@
 <?php
 
-require_once ("ValidateUser.php");
+require_once("ValidateUser.php");
 $validate = new ValidateUser();
 
 $login = $_POST["login"];

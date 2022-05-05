@@ -12,7 +12,7 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "admin") {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="phpStyle.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../ClientSide/script.js"></script>
+    <script src="script.js"></script>
     <title>Upload</title>
 </head>
 <body>

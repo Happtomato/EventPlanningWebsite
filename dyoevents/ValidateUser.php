@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once ("currentUser.php");
+require_once("currentUser.php");
 class ValidateUser{
 
     public $user = null;
@@ -90,7 +90,7 @@ class ValidateUser{
         if ($this->userIsValid()) {
 
             //create connection to db
-            require_once("dbcontroller.php");
+            require_once("DBController.php");
             $db_handle = new DBController();
 
             $conn = $db_handle->connectDB();

@@ -13,9 +13,9 @@ if(isset($_SESSION['user_type'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../ClientSide/stylesheet.css" />
+    <link rel="stylesheet" href="stylesheet.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <link rel="icon" type="image/png" href="../Pictures/D-Logo.png" />
+    <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
 
@@ -24,25 +24,25 @@ if(isset($_SESSION['user_type'])) {
 
 <body>
 <header>
-    <li><a href="../ServerSide/MemberPage.php"><img id="nav-title" src="../Pictures/logo.png" sizes="20px"></a></li>
+    <li><a href="MemberPage.php"><img id="nav-title" src="Pictures/logo.png" sizes="20px"></a></li>
     <!-- Nav Bar-->
     <ul class="nav-bar">
-        <li><a href="../ServerSide/Events.php">Events</a></li>
-        <li><a href="../ServerSide/pictures.php">Pictures</a></li>
+        <li><a href="Events.php">Events</a></li>
+        <li><a href="pictures.php">Pictures</a></li>
         <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
-        <li><a href="../ServerSide/shop.php">Tickets</a></li>
-        <li><a href="../ServerSide/profilePage.php">Profile</a></li>
-        <li><a href="../index.html">Log out</a></li>
+        <li><a href="shop.php">Tickets</a></li>
+        <li><a href="profilePage.php">Profile</a></li>
+        <li><a href="index.html">Log out</a></li>
     </ul>
     <!-- Nav Bar-->
     <!-- Nav Bar Mobile-->
     <div class="dropdown">
         <button class="dropdown-btn"><i class="fa fa-bars"></i></button>
         <div class="dropdown-content">
-            <a href="../ServerSide/MemberPage.php">Home</a>
-            <a href="../ServerSide/Events.php">Events</a>
-            <a href="../ServerSide/pictures.php">Pictures</a>
-            <a href="../ServerSide/shop.php">Tickets</a>
+            <a href="MemberPage.php">Home</a>
+            <a href="Events.php">Events</a>
+            <a href="pictures.php">Pictures</a>
+            <a href="shop.php">Tickets</a>
         </div>
     </div>
 
@@ -51,7 +51,7 @@ if(isset($_SESSION['user_type'])) {
         <button class="dropdown-btn"><i class="fa fa-user"></i></button>
         <div class="dropdown-content">
             <a href="../ServerSide/profilePage">Profile</a>
-            <a href="../index.html">Log out</a>
+            <a href="index.html">Log out</a>
         </div>
     </div>
 
@@ -95,7 +95,7 @@ if(isset($_SESSION['user_type'])) {
                 </div>
             </div>
             <div class="image-section">
-                <img class="img-staufen" src="../Pictures/aboutusstaufen.jpg">
+                <img class="img-staufen" src="Pictures/aboutusstaufen.jpg">
             </div>
         </div>
     </div>
