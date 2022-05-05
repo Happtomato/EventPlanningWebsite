@@ -65,7 +65,11 @@ if (!empty($_GET["action"])) {
             exit;
     }
 }
-?>
+
+session_start();
+if(isset($_SESSION['user_type'])) {
+    ?>
+
 
 
 <HTML>
@@ -237,3 +241,11 @@ if (!empty($_GET["action"])) {
 </BODY>
 
 </HTML>
+
+<?php
+}
+else{
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
+}
+?>

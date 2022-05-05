@@ -25,14 +25,16 @@ if( !isset($aResult['error']) ) {
             }
             else {
                 //save file to folder
+
                 $uploadDirectory = "../Pictures/";
-                $fileName = "$_FILES[$file]['name']";
+                $fileName = $_POST['fileName'];
 
-                $filePath = $uploadDirectory.$fileName;
+                $filePath = $uploadDirectory."/".$fileName;
 
-                echo $uploadDirectory;
-                echo $fileName;
-                echo $filePath;
+                /*
+                move_uploaded_file($_FILES[$file],"$uploadDirectory/$fileName");
+
+                */
 
                 $conn = $db_handle->connectDB();
 
@@ -44,6 +46,7 @@ if( !isset($aResult['error']) ) {
                 $sql = "INSERT INTO Pictures(`PictureName`, `PictureURL`) VALUES
                     ('$fileName','$filePath')";
 
+                $aResult = $sql;
 
                 if ($conn->query($sql) === TRUE) {
                 } else {

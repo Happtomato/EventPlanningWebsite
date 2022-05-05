@@ -1,9 +1,6 @@
 <?php
-
-if($_SESSION["userType"] != "User") {
-    //header("Location: ../ClientSide/LogIn.html");
-}
-
+session_start();
+if(isset($_SESSION['user_type'])) {
 
 ?>
 
@@ -62,3 +59,11 @@ if($_SESSION["userType"] != "User") {
 </body>
 
 </html>
+
+<?php
+}
+else{
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
+}
+?>

@@ -1,7 +1,11 @@
 <?php
 require_once("DBController.php");
 $db_handle = new DBController();
-?>
+session_start();
+if(isset($_SESSION['user_type'])) {
+
+    ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -73,3 +77,11 @@ $db_handle = new DBController();
 </body>
 
 </html>
+
+<?php
+}
+else{
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
+}
+?>

@@ -2,7 +2,7 @@
 
 require_once ("DBController.php");
 
-$dbHandle = new dbcontroller();
+$db_handle = new dbcontroller();
 
 
 function changeEmail(){
@@ -14,8 +14,11 @@ function changePassword(){
 function deleteAccount(){
 
 }
+session_start();
+if(isset($_SESSION['user_type'])) {
 
-?>
+    ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -67,3 +70,10 @@ function deleteAccount(){
 </body>
 </html>
 
+<?php
+}
+else{
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
+}
+?>

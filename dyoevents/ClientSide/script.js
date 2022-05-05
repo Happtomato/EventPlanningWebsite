@@ -13,6 +13,7 @@ function dropHandler(ev) {
                     //input all the logic to parse xml file -->
                     var formData = new FormData();
                     formData.append('functionname', "upload");
+                    formData.append('fileName', file.name);
                     formData.append('arguments', file);
 
                     //send xml file to php script

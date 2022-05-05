@@ -1,13 +1,7 @@
 <?php
 require_once("DBController.php");
 $db_handle = new DBController();
-/*
-if($_SESSION["userType"] != "Admin") {
-    session_destroy();
-    header("Location: ../ClientSide/LogIn.html");
-}
 
-*/
 function createEvent($eventName,$eventDate,$event){
 
 }
@@ -22,13 +16,19 @@ function deleteUser($username){
 }
 function uploadPicture()
 {
+
 }
 function deletePicture()
 {
+
 }
 
 
-?>
+session_start();
+if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "admin") {
+
+    ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -67,6 +67,7 @@ function deletePicture()
                 <a href="../ServerSide/pictures.php">Pictures</a>
                 <a href="../ClientSide/AboutUs.html">About Us</a>
                 <a href="../ServerSide/shop.php">Tickets</a>
+                <a href="../ServerSide/uploadFileBox.php">upload</a>
             </div>
         </div>
 
@@ -84,3 +85,12 @@ function deletePicture()
 </body>
 
 </html>
+
+
+<?php
+}
+else{
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
+}
+?>

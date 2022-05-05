@@ -1,7 +1,11 @@
 <?php
 require_once("DBController.php");
 $db_handle = new DBController();
+session_start();
+if(isset($_SESSION['user_type'])) {
+
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -61,7 +65,7 @@ $db_handle = new DBController();
                 <div class="product-tile-footer">
                     <div class="product-title"><?php echo $value["EventName"]; ?></div>
                     <div class="product-title"><?php echo $value["EventDescription"]; ?></div>
-                    <div class="product-price"><?php echo $value["EventDate"]."fr"; ?></div>
+                    <div class="product-price"><?php echo $value["EventDate"]; ?></div>
                 </div>
             </div>
     <?php
@@ -73,3 +77,11 @@ $db_handle = new DBController();
 </body>
 
 </html>
+
+    <?php
+}
+else{
+    session_destroy();
+    header("Location: ../ClientSide/LogIn.html");
+}
+?>
