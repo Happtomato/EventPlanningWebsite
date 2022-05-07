@@ -81,6 +81,7 @@ if(isset($_SESSION['user_type'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="phpStyle.css" />
     <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 
@@ -165,7 +166,7 @@ if(isset($_SESSION['user_type'])) {
                                     <td style="text-align:right;"><?php echo "Fr " . $item["price"]; ?></td>
                                     <td style="text-align:right;"><?php echo "Fr " . number_format($item_price, 2); ?></td>
                                     <!-- button remove item -->
-                                    <td style="text-align:center;"><a href="shop.php?action=remove&code=<?php echo $item[" class="btnRemoveAction"><img src="Pictures/icon-delete.png" alt="Remove Item" style="width: 25px" /></a></td>
+                                    <td style="text-align:center;"><a href="shop.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="Pictures/icon-delete.png" alt="Remove Item" style="width: 25px" /></a></td>
                                 </tr>
                             <?php
                                 $total_quantity += $item["quantity"];
@@ -203,11 +204,8 @@ if(isset($_SESSION['user_type'])) {
                     foreach ($product_array as $key => $value) {
                 ?>
                         <div class="product-item">
-                            <form method="post" action="shop.php?action=add&code=<?php echo $value[">
-                                <div><img class="product-image" src="Pictures/D-Logo.png">
-                                    <div class="product-price"><?php echo $value["ProductPrice"] . "fr"; ?></div>
-                                </div>
-
+                            <form method="post" action="shop.php?action=add&code=<?php echo $value["Product_ID"]; ?>">
+                                <div><img class="product-image"  src="Pictures/D-Logo.png"><div class="product-price"><?php echo $value["ProductPrice"]."fr"; ?></div></div>
                                 <div class="product-tile-footer">
                                     <div class="product-title"><?php echo $value["ProductName"]; ?></div>
 
@@ -220,6 +218,10 @@ if(isset($_SESSION['user_type'])) {
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                             <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
                                         </select>
                                         <input type="submit" value="Add to Cart" class="btnAddAction" />
                                     </div>
