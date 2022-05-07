@@ -21,12 +21,13 @@ if(isset($_SESSION['user_type'])) {
 
 <body>
     <header>
-        <li><img id="nav-title" src="Pictures/logo.png" sizes="20px"></li>
+    <li><img id="nav-title" src="Pictures/logo.png" sizes="20px"></li>
         <!-- Nav Bar-->
         <ul class="nav-bar">
-        <li><a href="Events.php">Events</a></li>
+            <li><a href="MemberPage.php">Home</a></li>
+            <li><a href="Events.php">Events</a></li>
             <li><a href="pictures.php">Pictures</a></li>
-            <li><a href="../ClientSide/AboutUs.html">About Us</a></li>
+            <li><a href="aboutUs.php">About Us</a></li>
             <li><a href="shop.php">Tickets</a></li>
             <li><a href="profilePage.php">Profile</a></li>
             <li><a href="index.html">Log out</a></li>
@@ -38,7 +39,8 @@ if(isset($_SESSION['user_type'])) {
             <div class="dropdown-content">
                 <a href="MemberPage.php">Home</a>
                 <a href="Events.php">Events</a>
-                <a href="../ClientSide/AboutUs.html">About Us</a>
+                <a href="pictures.php">Pictures</a>
+                <a href="aboutUs.php">About Us</a>
                 <a href="shop.php">Tickets</a>
             </div>
         </div>
@@ -47,7 +49,7 @@ if(isset($_SESSION['user_type'])) {
         <div class="dropdown">
             <button class="dropdown-btn"><i class="fa fa-user"></i></button>
             <div class="dropdown-content">
-                <a href="../ServerSide/profilePage">Profile</a>
+                <a href="profilePage.php">Profile</a>
                 <a href="index.html">Log out</a>
             </div>
         </div>
