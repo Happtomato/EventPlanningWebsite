@@ -90,6 +90,6 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "admin") {
 }
 else{
     session_destroy();
-    header("Location: ../ClientSide/LogIn.html");
+    header("Location: LogIn.html");
 }
 ?>
