@@ -15,6 +15,7 @@ if(isset($_SESSION['user_type'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://kit.fontawesome.com/7d9d59c948.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
@@ -79,12 +80,12 @@ if(isset($_SESSION['user_type'])) {
                             <p>Interessiert? Dann sichere jetzt dein Ticket
                                 für die nächste Party!</p>
                         </a>
-                        <p>Fragen? Schreib uns auf Instagram oder per Mail:</p>
+                        <p>Fragen? Schreib uns auf WhatsApp, Instagram oder per Mail:</p>
 
                     </div>
                     <div class="social">
                         
-                        <a href="https://chat.whatsapp.com/CoG6rfLFqCa0LwHg7K5Doy"><i class="fa fa-whatsapp"></i></a>
+                        <a href="https://chat.whatsapp.com/CoG6rfLFqCa0LwHg7K5Doy"><i class="fa-brands fa-whatsapp"></i></a>
                         <a href="https://www.instagram.com/dyoevents/"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:info@dyoevents.ch"><i class="fa fa-envelope"></i></a>
                     </div>
@@ -103,6 +104,6 @@ if(isset($_SESSION['user_type'])) {
 }
 else{
     session_destroy();
-    header("Location: ../ClientSide/LogIn.html");
+    header("Location: LogIn.html");
 }
 ?>
