@@ -5,11 +5,12 @@ function getTransactionId($amount){
     $ch = curl_init();
 
     $id = uniqid();
+
     curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.datatrans.com/v1/transactions');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"currency\": \"CHF\",\n    \"refno\": \"$id\",\n    \"amount\": $amount,\n    \"paymentMethods\": [\"ECA\",\"VIS\",\"MAU\",\"TWI\",\"APL\"]\n    \"redirect\": {\n        \"successUrl\": \"https://pay.sandbox.datatrans.com/upp/merchant/successPage.jsp\",\n        \"cancelUrl\": \"https://pay.sandbox.datatrans.com/upp/merchant/cancelPage.jsp\",\n        \"errorUrl\": \"https://pay.sandbox.datatrans.com/upp/merchant/errorPage.jsp\"\n    }\n}");
-    curl_setopt($ch, CURLOPT_USERPWD, '{100000}' . ':' . '{tgnHbZgxJB8bsKb}');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"currency\": \"CHF\",\n    \"refno\": \"$id\",\n    \"amount\": $amount,\n    \"autoSettle\": true,\n   \"redirect\": {\n        \"successUrl\": \"https://dyoevents.ch/thankyou.php\",\n        \"cancelUrl\": \"https://dyoevents.ch/shop.php\",\n        \"errorUrl\": \"https://dyoevents.ch/paymenterror.php\"\n    }\n}");
+    curl_setopt($ch, CURLOPT_USERPWD, '1100035796' . ':' . 'evIVx36CEWa0LbJu');
 
     $headers = array();
     $headers[] = 'Content-Type: application/json; charset=UTF-8';
@@ -20,8 +21,9 @@ function getTransactionId($amount){
         echo 'Error:' . curl_error($ch);
     }
     curl_close($ch);
+    $json = json_decode($result);
 
-
+    return $json->transactionId;
 }
 
 function redirectUserToDataTrans($transId){

@@ -62,8 +62,23 @@ if (!empty($_GET["action"])) {
             break;
 
         case "checkout":
-            $id = getTransactionId();
+            $id = getTransactionId(getTotalPrice());
             redirectUserToDataTrans($id);
+    }
+}
+
+function getTotalPrice()
+{
+    if (isset($_SESSION["cart_item"])) {
+        $total_quantity = 0;
+        $total_price = 0;
+
+        foreach ($_SESSION["cart_item"] as $item) {
+            $item_price = $item["quantity"] * $item["price"];
+            $total_quantity += $item["quantity"];
+            $total_price += ($item["price"] * $item["quantity"]);
+        }
+        return $total_price * 100;
     }
 }
 
