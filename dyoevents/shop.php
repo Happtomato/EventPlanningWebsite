@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("DBController.php");
+require_once ("checkout.php");
 $db_handle = new DBController();
 
 //manipulate the shopping cart
@@ -61,8 +62,8 @@ if (!empty($_GET["action"])) {
             break;
 
         case "checkout":
-            header("Location: ../account.html");
-            exit;
+            $id = getTransactionId();
+            redirectUserToDataTrans($id);
     }
 }
 

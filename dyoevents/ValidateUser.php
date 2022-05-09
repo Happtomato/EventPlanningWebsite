@@ -55,7 +55,7 @@ class ValidateUser{
             }
         } else {
             echo "Benutzer wurde nicht gefunden";
-            header("Location: ../ClientSide/LogIn.html");
+            header("Location: LogIn.html");
         }
 
     }
