@@ -2,10 +2,8 @@
 session_start();
 
 require_once("currentUser.php");
+
 class ValidateUser{
-
-    public $user = null;
-
 
     function userIsValid($userLogin,$userPassword){
 
@@ -20,15 +18,19 @@ class ValidateUser{
             die("Connection failed: " . $conn->connect_error);
         }
 
-        //now working
+        $stmt = $conn->prepare("SELECT UserPassword FROM UserAccounts WHERE UserLogin = ?");
+        $stmt->bind_param("s", $userLogin);
 
-        $sql = "SELECT UserPassword FROM `UserAccounts` WHERE UserLogin = '$userLogin'";
-        $result = $conn->query($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $stmt->close();
         $conn->close();
 
 
         $hashArray = $result->fetch_all();
         $hash = $hashArray[0][0];
+
         if (password_verify($userPassword,$hash)) {
 
 
@@ -71,6 +73,9 @@ class ValidateUser{
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
+
+
+
         $sql = "SELECT userType FROM UserAccounts WHERE UserLogin = '$userLogin'";
         $result = $conn->query($sql);
 
