@@ -29,6 +29,7 @@ if (!strcmp($password,$confirmedPW)) {
         header("Location: LogIn.html");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+        header("Location: signUpForm.html");
     }
 
     //close connection
