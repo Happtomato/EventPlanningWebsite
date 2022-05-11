@@ -26,7 +26,7 @@ if (!strcmp($password,$confirmedPW)) {
                     ('$login','$number','$hashedPW','user' )";
 
     if ($conn->query($sql) === TRUE) {
-        header("Location: ../ClientSide/LogIn.html");
+        header("Location: LogIn.html");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
