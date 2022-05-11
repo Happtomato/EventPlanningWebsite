@@ -85,39 +85,8 @@ class ValidateUser{
 
         $hashArray = $result->fetch_all();
         return $hashArray[0][0];
-
-
-
+        
         echo "error";
         return "";
     }
-
-    /*
-    function getUserID($userLogin)
-    {
-
-        if ($this->userIsValid()) {
-
-            //create connection to db
-            require_once("DBController.php");
-            $db_handle = new DBController();
-
-            $conn = $db_handle->connectDB();
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT User_ID FROM UserAccounts WHERE userLogin = '$userLogin'";
-
-
-            $conn->close();
-
-            return $result;
-        }
-        echo "error";
-        return "";
-    }
-    */
 }
