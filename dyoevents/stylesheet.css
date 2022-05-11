@@ -70,7 +70,9 @@ main {
 }
 
 input[type=text],
-input[type=password] {
+input[type=password],
+input[type=email],
+input[type=tel] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -489,4 +491,37 @@ body {
   text-align: center;
   clear: both;
   margin: 38px 0px;
+}
+
+#event-grid .txt-heading {
+  margin-bottom: 18px;
+}
+
+.event-item {
+  float: left;
+  background: #ffffff;
+  margin: 30px 30px 0px 0px;
+  border: #E0E0E0 1px solid;
+}
+
+.event-image {
+  height: 1px;
+  width: 1px;
+  background-color: #FFF;
+}
+
+.event-tile-footer {
+  padding: 15px 15px 0px 15px;
+  overflow: auto;
+}
+
+#event-grid {
+  margin: 40px;
+}
+.event-title {
+  margin-bottom: 20px;
+}
+
+.event-date {
+  float: left;
 }
