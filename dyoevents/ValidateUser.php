@@ -74,21 +74,25 @@ class ValidateUser{
             die("Connection failed: " . $conn->connect_error);
         }
 
+        $stmt = $conn->prepare("SELECT userType FROM UserAccounts WHERE UserLogin = ?");
+        $stmt->bind_param("s", $userLogin);
 
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        $sql = "SELECT userType FROM UserAccounts WHERE UserLogin = '$userLogin'";
-        $result = $conn->query($sql);
-
+        $stmt->close();
         $conn->close();
 
-        $resultArray = $result->fetch_all();
-        return $resultArray[0][0];
+        $hashArray = $result->fetch_all();
+        return $hashArray[0][0];
+
 
 
         echo "error";
         return "";
     }
 
+    /*
     function getUserID($userLogin)
     {
 
@@ -115,5 +119,5 @@ class ValidateUser{
         echo "error";
         return "";
     }
-
+    */
 }
