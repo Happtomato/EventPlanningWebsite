@@ -47,10 +47,8 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "admin") {
     <li><img id="nav-title" src="Pictures/logo.png" sizes="20px"></li>
         <!-- Nav Bar-->
         <ul class="nav-bar">
-            <li><a href="MemberPage.php">Home</a></li>
-            <li><a href="Events.php">Events</a></li>
+            <li><a href="AdminPage.php">Home</a></li>
             <li><a href="pictures.php">Pictures</a></li>
-            <li><a href="aboutUs.php">About Us</a></li>
             <li><a href="shop.php">Tickets</a></li>
             <li><a href="upload.php">Upload</a></li>
             <li><a href="profilePage.php">Profile</a></li>
@@ -62,9 +60,7 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "admin") {
             <button class="dropdown-btn"><i class="fa fa-bars"></i></button>
             <div class="dropdown-content">
                 <a href="MemberPage.php">Home</a>
-                <a href="Events.php">Events</a>
                 <a href="pictures.php">Pictures</a>
-                <a href="aboutUs.php">About Us</a>
                 <a href="shop.php">Tickets</a>
                 <a href="upload.php">Upload</a>
             </div>
