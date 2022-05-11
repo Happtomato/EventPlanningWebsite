@@ -69,25 +69,6 @@ main {
   font-size: 1em;
 }
 
-.logInButtons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 100px;
-
-  font-size: 2em;
-}
-
-.navText {
-  font-style: none;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-}
-
-.navText:hover {
-  color: #7B38F5;
-}
-
 input[type=text],
 input[type=password] {
   width: 100%;
@@ -165,6 +146,7 @@ button:hover {
 
 .content-section .social {
   margin: 40px 40px;
+  text-align: center;
 }
 
 .content-section .social i {
@@ -178,7 +160,7 @@ button:hover {
 }
 
 /* Mobile Start*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .container {
     width: 80%;
     display: block;
@@ -360,8 +342,12 @@ main {
   justify-content: center;
   align-items: center;
   padding: 20px 100px;
-
   font-size: 2em;
+}
+@media screen and (max-width: 550px) {
+  .logInButtons{
+    padding: 0px 0px;
+  }
 }
 
 .navText {
