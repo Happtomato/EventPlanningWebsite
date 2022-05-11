@@ -34,5 +34,5 @@ if (!strcmp($password,$confirmedPW)) {
     //close connection
     $conn->close();
 } else {
-    header("Location: ../ClientSide/signUpForm.html");
+    header("Location: signUpForm.html");
 }
