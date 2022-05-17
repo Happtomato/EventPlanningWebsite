@@ -20,10 +20,12 @@ class ValidateUser{
             die("Connection failed: " . $conn->connect_error);
         }
 
-        //now working
+        $stmt = $conn->prepare("SELECT UserPassword From `UserAccounts` WHERE UserLogin = (?)");
+        $stmt->bind_param("s", $userLogin);
 
-        $sql = "SELECT UserPassword FROM `UserAccounts` WHERE UserLogin = '$userLogin'";
-        $result = $conn->query($sql);
+        $result = $stmt->execute();
+
+        $stmt->execute();
         $conn->close();
 
 
@@ -71,10 +73,14 @@ class ValidateUser{
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "SELECT userType FROM UserAccounts WHERE UserLogin = '$userLogin'";
-        $result = $conn->query($sql);
+        $stmt = $conn->prepare("SELECT userType From `UserAccounts` WHERE UserLogin = (?)");
+        $stmt->bind_param("s", $userLogin);
 
+        $result = $stmt->execute();
+
+        $stmt->execute();
         $conn->close();
+
 
         $resultArray = $result->fetch_all();
         return $resultArray[0][0];
@@ -84,6 +90,7 @@ class ValidateUser{
         return "";
     }
 
+    /*
     function getUserID($userLogin)
     {
 
@@ -110,5 +117,5 @@ class ValidateUser{
         echo "error";
         return "";
     }
-
+    */
 }

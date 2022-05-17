@@ -23,10 +23,11 @@ if (!strcmp($password,$confirmedPW)) {
 
     $stmt = $conn->prepare("INSERT INTO UserAccounts (`UserLogin`, `phoneNumber`, `UserPassword`, `userType`) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $login, $number, $hashedPW,'user');
-    
+
+
     //insert new User in database
     if ($stmt->execute() === TRUE) {
-        header("Location: ../ClientSide/LogIn.html");
+        header("Location: LogIn.html");
     } else {
         echo "Error: " . $stmt . "<br>" . $conn->error;
     }
@@ -35,5 +36,5 @@ if (!strcmp($password,$confirmedPW)) {
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../ClientSide/signUpForm.html");
+    header("Location: SignUpForm.html");
 }
