@@ -2,10 +2,8 @@
 session_start();
 
 require_once("currentUser.php");
+
 class ValidateUser{
-
-    public $user = null;
-
 
     function userIsValid($userLogin,$userPassword){
 
@@ -20,17 +18,19 @@ class ValidateUser{
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $stmt = $conn->prepare("SELECT UserPassword From `UserAccounts` WHERE UserLogin = (?)");
+        $stmt = $conn->prepare("SELECT UserPassword FROM UserAccounts WHERE UserLogin = ?");
         $stmt->bind_param("s", $userLogin);
 
-        $result = $stmt->execute();
-
         $stmt->execute();
+        $result = $stmt->get_result();
+
+        $stmt->close();
         $conn->close();
 
 
         $hashArray = $result->fetch_all();
         $hash = $hashArray[0][0];
+
         if (password_verify($userPassword,$hash)) {
 
 
@@ -73,49 +73,20 @@ class ValidateUser{
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $stmt = $conn->prepare("SELECT userType From `UserAccounts` WHERE UserLogin = (?)");
+
+        $stmt = $conn->prepare("SELECT userType FROM UserAccounts WHERE UserLogin = ?");
         $stmt->bind_param("s", $userLogin);
 
-        $result = $stmt->execute();
-
         $stmt->execute();
+        $result = $stmt->get_result();
+
+        $stmt->close();
         $conn->close();
 
-
-        $resultArray = $result->fetch_all();
-        return $resultArray[0][0];
-
-
+        $hashArray = $result->fetch_all();
+        return $hashArray[0][0];
+        
         echo "error";
         return "";
     }
-
-    /*
-    function getUserID($userLogin)
-    {
-
-        if ($this->userIsValid()) {
-
-            //create connection to db
-            require_once("DBController.php");
-            $db_handle = new DBController();
-
-            $conn = $db_handle->connectDB();
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT User_ID FROM UserAccounts WHERE userLogin = '$userLogin'";
-
-
-            $conn->close();
-
-            return $result;
-        }
-        echo "error";
-        return "";
-    }
-    */
 }

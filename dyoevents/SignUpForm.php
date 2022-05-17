@@ -21,20 +21,26 @@ if (!strcmp($password,$confirmedPW)) {
     //hash pw
     $hashedPW = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO UserAccounts (`UserLogin`, `phoneNumber`, `UserPassword`, `userType`) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $login, $number, $hashedPW,'user');
 
+    $stmt = $conn->prepare("INSERT INTO UserAccounts (UserLogin, phoneNumber, UserPassword,userType) VALUES (?, ?, ?, 'user')");
+    $stmt->bind_param("sss", $login, $number, $hashedPW);
 
     //insert new User in database
+    /*
+    $sql = "INSERT INTO UserAccounts(`UserLogin`, `phoneNumber`, `UserPassword`, `userType`) VALUES
+                    ('$login','$number','$hashedPW','user' )";
+    */
+
     if ($stmt->execute() === TRUE) {
+        $stmt->close();
+        $conn->close();
         header("Location: LogIn.html");
     } else {
         echo "Error: " . $stmt . "<br>" . $conn->error;
+        $stmt->close();
+        $conn->close();
+        header("Location: signUpForm.html");
     }
-
-    //close connection
-    $stmt->close();
-    $conn->close();
 } else {
-    header("Location: SignUpForm.html");
+    header("Location: signUpForm.html");
 }
