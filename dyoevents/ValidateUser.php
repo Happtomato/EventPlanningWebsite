@@ -85,7 +85,7 @@ class ValidateUser{
 
         $hashArray = $result->fetch_all();
         return $hashArray[0][0];
-        
+
         echo "error";
         return "";
     }
