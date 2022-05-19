@@ -32,4 +32,5 @@ class dbcontroller
         $rowcount = mysqli_num_rows($result);
         return $rowcount;
     }
+
 }

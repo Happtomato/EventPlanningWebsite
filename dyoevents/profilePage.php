@@ -39,11 +39,11 @@ if(isset($_SESSION['user_type'])) {
         <ul class="nav-bar">
             <li><a href="MemberPage.php">Home</a></li>
             <li><a href="Events.php">Events</a></li>
-            <li><a href="pictures.php">Pictures</a></li>
-            <li><a href="aboutUs.php">About Us</a></li>
+            <li><a href="pictures.php">Bilder</a></li>
+            <li><a href="aboutUs.php">Über uns</a></li>
             <li><a href="shop.php">Tickets</a></li>
-            <li><a href="profilePage.php">Profile</a></li>
-            <li><a href="index.html">Log out</a></li>
+            <li><a href="profilePage.php">Profil</a></li>
+            <li><a href="index.html">Ausloggen</a></li>
         </ul>
         <!-- Nav Bar-->
         <!-- Nav Bar Mobile-->
@@ -52,8 +52,8 @@ if(isset($_SESSION['user_type'])) {
             <div class="dropdown-content">
                 <a href="MemberPage.php">Home</a>
                 <a href="Events.php">Events</a>
-                <a href="pictures.php">Pictures</a>
-                <a href="aboutUs.php">About Us</a>
+                <a href="pictures.php">Bilder</a>
+                <a href="aboutUs.php">Über uns</a>
                 <a href="shop.php">Tickets</a>
             </div>
         </div>
@@ -62,8 +62,8 @@ if(isset($_SESSION['user_type'])) {
         <div class="dropdown">
             <button class="dropdown-btn"><i class="fa fa-user"></i></button>
             <div class="dropdown-content">
-                <a href="profilePage.php">Profile</a>
-                <a href="index.html">Log out</a>
+                <a href="profilePage.php">Profil</a>
+                <a href="index.html">Ausloggen</a>
             </div>
         </div>
 

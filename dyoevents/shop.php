@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("DBController.php");
+require_once ("checkout.php");
 $db_handle = new DBController();
 
 //manipulate the shopping cart
@@ -61,8 +62,23 @@ if (!empty($_GET["action"])) {
             break;
 
         case "checkout":
-            header("Location: ../account.html");
-            exit;
+            $id = getTransactionId(getTotalPrice());
+            redirectUserToDataTrans($id);
+    }
+}
+
+function getTotalPrice()
+{
+    if (isset($_SESSION["cart_item"])) {
+        $total_quantity = 0;
+        $total_price = 0;
+
+        foreach ($_SESSION["cart_item"] as $item) {
+            $item_price = $item["quantity"] * $item["price"];
+            $total_quantity += $item["quantity"];
+            $total_price += ($item["price"] * $item["quantity"]);
+        }
+        return $total_price * 100;
     }
 }
 
@@ -95,11 +111,11 @@ if(isset($_SESSION['user_type'])) {
         <ul class="nav-bar">
             <li><a href="MemberPage.php">Home</a></li>
             <li><a href="Events.php">Events</a></li>
-            <li><a href="pictures.php">Pictures</a></li>
-            <li><a href="aboutUs.php">About Us</a></li>
+            <li><a href="pictures.php">Bilder</a></li>
+            <li><a href="aboutUs.php">Über uns</a></li>
             <li><a href="shop.php">Tickets</a></li>
-            <li><a href="profilePage.php">Profile</a></li>
-            <li><a href="index.html">Log out</a></li>
+            <li><a href="profilePage.php">Profil</a></li>
+            <li><a href="index.html">Ausloggen</a></li>
         </ul>
         <!-- Nav Bar-->
         <!-- Nav Bar Mobile-->
@@ -108,8 +124,8 @@ if(isset($_SESSION['user_type'])) {
             <div class="dropdown-content">
                 <a href="MemberPage.php">Home</a>
                 <a href="Events.php">Events</a>
-                <a href="pictures.php">Pictures</a>
-                <a href="aboutUs.php">About Us</a>
+                <a href="pictures.php">Bilder</a>
+                <a href="aboutUs.php">Über uns</a>
                 <a href="shop.php">Tickets</a>
             </div>
         </div>
@@ -118,8 +134,8 @@ if(isset($_SESSION['user_type'])) {
         <div class="dropdown">
             <button class="dropdown-btn"><i class="fa fa-user"></i></button>
             <div class="dropdown-content">
-                <a href="profilePage.php">Profile</a>
-                <a href="index.html">Log out</a>
+                <a href="profilePage.php">Profil</a>
+                <a href="index.html">Ausloggen</a>
             </div>
         </div>
 
