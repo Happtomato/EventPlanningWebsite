@@ -56,25 +56,31 @@ if(isset($_SESSION['user_type'])) {
 
         <!-- Nav Bar Mobile-->
     </header>
+    
+    <div id="event-grid">
+                <div class="txt-heading">Events</div>
+                <?php
+                $product_array = $db_handle->runQuery("SELECT * FROM Events ORDER BY EVENT_ID ASC");
+                if (!empty($product_array)) {
+                    foreach ($product_array as $key => $value) {
+                ?>
+                        <div class="event">
+                        <form method="post" action="Events.php?action=add&code=<?php echo $value["Event_ID"]; ?>">
+                                <div><img class="event-image"  src="Pictures/D-Logo.png"><div class="event-date"><?php echo $value["EventDate"]; ?></div></div>
+                                <div class="event-title-footer">
+                                    <div class="event-title"><?php echo $value["EventName"]; ?></div>
 
-    <div class="txt-heading">Events</div>
-    <?php
-    $product_array = $db_handle->runQuery("SELECT * FROM Events ORDER BY Event_ID ASC");
-    if (!empty($product_array)) {
-        foreach ($product_array as $key => $value) {
-    ?>
-            <div class="event">
-                <div class="product-tile-footer">
-                    <div class="product-title"><?php echo $value["EventName"]; ?></div>
-                    <div class="product-title"><?php echo $value["EventDescription"]; ?></div>
-                    <div class="product-price"><?php echo $value["EventDate"]; ?></div>
-                </div>
+                                    <div class="event-description"><?php echo $value["EventDescription"]; ?></div>
+                                   
+                                </div>
+                    </form>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
-    <?php
-        }
-    }
-    ?>
-    </div>
+        </div> <!-- End middle col -->
 
 </body>
 
