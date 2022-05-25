@@ -525,15 +525,3 @@ body {
 .event-date {
   float: left;
 }
-.regTxt{
-  font-size: x-large;
-  font-style: none;
-  text-decoration: none;
-  color: #555;
-}
-.logTxt{
-  font-size: x-large;
-  font-style: none;
-  text-decoration: none;
-  color: #555;
-}
