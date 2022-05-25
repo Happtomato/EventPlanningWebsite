@@ -72,7 +72,8 @@ main {
 input[type=text],
 input[type=password],
 input[type=email],
-input[type=tel] {
+input[type=tel]
+input[type=date] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -206,6 +207,10 @@ button:hover {
 @media screen and (max-width: 1250px) {
 
   #nav-title{
+    font-size: 2px;
+  }
+
+  #index-title{
     font-size: 2px;
   }
 
