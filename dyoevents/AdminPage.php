@@ -259,56 +259,57 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "admin") {
 
 
     <!-- Form Create Event -->
-    <h2>Create Event</h2>
     <form method="post" action="AdminPage.php">
         <div class="container">
+            <h2>Event erstellen</h2>
             <input type="hidden" name="action" value="createEvent" />
             <input type="text" placeholder="Eventname" name="EventName" required>
             <input type="date" placeholder="EventDatum" name="EventDate" required>
             <input type="text" placeholder="EventDescription" name="EventDesc" required>
             <input type="text" placeholder="Eventpreis" name="Price" required>
 
-            <button type="submit">Create</button>
+            <button type="submit">Erstellen</button>
+        </div>
     </form>
 
     <!-- Form Delete Event -->
-    <h2>Delete Event</h2>
     <form method="post" action="AdminPage.php">
         <div class="container">
+            <h2>Event löschen</h2>
             <input type="hidden" name="action" value="deleteEvent" />
             <input type="text" placeholder="Eventname" name="EventName" required>
-
-            <button type="submit">Delete</button>
+            <button type="submit">Löschen</button>
+        </div>
     </form>
 
     <!-- Form Promote User -->
-    <h2>Promote User</h2>
     <form method="post" action="AdminPage.php">
-        <div class="container">
+            <div class="container">
+            <h2>Benutzer zu Admin machen</h2>
             <input type="hidden" name="action" value="createNewAdmin" />
             <input type="text" placeholder="Username" name="UserName" required>
-
-            <button type="submit">Promote</button>
+            <button type="submit">Befördern</button>
+        </div>
     </form>
 
     <!-- Form Delete User -->
-    <h2>Delete User</h2>
     <form method="post" action="AdminPage.php">
         <div class="container">
+            <h2>Benutzer löschen</h2>
             <input type="hidden" name="action" value="deleteUser" />
             <input type="text" placeholder="UserName" name="UserName" required>
-
-            <button type="submit">Delete</button>
+            <button type="submit">Löschen</button>
+        </div>
     </form>
 
     <!-- Form Delete Picture -->
-    <h2>Delete Picture</h2>
     <form method="post" action="AdminPage.php">
         <div class="container">
+            <h2>Bild löschen</h2>
             <input type="hidden" name="action" value="deletePicture" />
             <input type="text" placeholder="Picturename" name="PictureName" required>
-
-            <button type="submit">delete</button>
+            <button type="submit">Löschen</button>
+        </div>
     </form>
 
 </body>
