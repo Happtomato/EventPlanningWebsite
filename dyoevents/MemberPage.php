@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['user_type'])) {
-
+$user = strtok($_SESSION['login'], '@');
 ?>
 
 
@@ -55,7 +55,28 @@ if(isset($_SESSION['user_type'])) {
 
         <!-- Nav Bar Mobile-->
     </header>
+    <h1><?php echo "Hello ".$user ; ?></h1>
+    <div id = "product-grid">
+        <div id = "txt-heading">Deine Produkte</div>
+    <br>
+        <?php
+                            foreach ($_SESSION["cart_item"] as $item) {
+                                $item_price = $item["quantity"] * $item["price"];
+                            ?>
+                           
+                                <tr>
+                                    <td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+                                    <td><?php echo $item["code"]; ?></td>
+                                    <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+                                    
+                                    <td style="text-align:right;"><?php echo "Fr " . number_format($item_price, 2); ?></td>
 
+                                </tr>
+                            <?php
+                                $total_quantity += $item["quantity"];
+                                $total_price += ($item["price"] * $item["quantity"]);
+                            }
+                            ?>
 </body>
 
 </html>
