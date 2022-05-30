@@ -38,11 +38,10 @@ class ValidateUser{
 
                 $_SESSION['login'] = $userLogin;
 
-                $_SESSION['pw'] = $userPassword;
-
                 $_SESSION['user_type'] = "admin" ;
 
                 header("Location: AdminPage.php");
+
 
             }
             else{
@@ -88,5 +87,23 @@ class ValidateUser{
 
         echo "error";
         return "";
+    }
+    function sendMailToUser($email){
+
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 6; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        $subject = "Email verification";
+
+        $message = "Please Confirm your Email with the Following Code:" . $randomString;
+
+        $headers = 'From: dyoevents.info@gmail.com';
+        mail($email,$subject,$message,$headers);
+
+        return $randomString;
     }
 }

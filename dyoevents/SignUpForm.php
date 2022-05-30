@@ -4,9 +4,10 @@ $login = $_POST["login"];
 $number = $_POST["number"];
 $password = $_POST["password"];
 $confirmedPW = $_POST["confirmPassword"];
+$code = $_POST['code'];
+$createdCode = $_POST['createdCode'];
 
-
-if (!strcmp($password,$confirmedPW)) {
+if (!strcmp($password,$confirmedPW) && !strcmp($code,$createdCode)) {
 
     require_once("DBController.php");
     $db_handle = new DBController();
