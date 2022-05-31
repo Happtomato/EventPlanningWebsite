@@ -7,7 +7,6 @@ $login = $_POST["login"];
 $number = $_POST["number"];
 $password = $_POST["password"];
 $confirmedPW = $_POST["confirmPassword"];
-
 $code = $validation->sendMailToUser($login);
 
 ?>

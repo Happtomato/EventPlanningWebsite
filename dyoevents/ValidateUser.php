@@ -88,21 +88,26 @@ class ValidateUser{
         echo "error";
         return "";
     }
+
     function sendMailToUser($email){
 
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
 
-        $subject = "Email verification";
+        $subject = 'Please activate your account';
 
-        $message = "Please Confirm your Email with the Following Code:" . $randomString;
+        $message = <<<MESSAGE
+            Hi,
+            Please click the following link to activate your account:
+            $randomString
+            MESSAGE;
+        $headers = 'From:noreply@dyoevents.com';
 
-        $headers = 'From: dyoevents.info@gmail.com';
-        mail($email,$subject,$message,$headers);
+        mail($email, $subject, nl2br($message), $headers);
 
         return $randomString;
     }
