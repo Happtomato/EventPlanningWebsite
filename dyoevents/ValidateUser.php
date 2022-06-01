@@ -1,4 +1,10 @@
 <?php
+
+
+require("PHPMailer-master/src/PHPMailer.php");
+require("PHPMailer-master/src/SMTP.php");
+require ("PHPMailer-master/src/Exception.php");
+
 session_start();
 
 require_once("currentUser.php");
@@ -33,23 +39,19 @@ class ValidateUser{
 
         if (password_verify($userPassword,$hash)) {
 
-
             if($this->getUserType($userLogin) == "admin"){
 
                 $_SESSION['login'] = $userLogin;
-
-                $_SESSION['pw'] = $userPassword;
 
                 $_SESSION['user_type'] = "admin" ;
 
                 header("Location: AdminPage.php");
 
+
             }
             else{
 
                 $_SESSION['login'] = $userLogin;
-
-                $_SESSION['pw'] = $userPassword;
 
                 $_SESSION['user_type'] = "user" ;
 
@@ -86,7 +88,56 @@ class ValidateUser{
         $hashArray = $result->fetch_all();
         return $hashArray[0][0];
 
-        echo "error";
-        return "";
     }
+
+    /**
+     * @throws \Exception
+     */
+    function sendMailToUser(string $email): string
+    {
+        $randomString = md5(uniqid('', true));
+        $subject = 'Please activate your account';
+        $message = <<<MSG
+        Hi,
+        please click the following link to activate your account:
+        {$randomString}
+        MSG;
+
+
+
+        $headers = [
+            'From' => 'From: dyoevents.info@gmail.com',
+            'MIME-Version' => 'MIME-Version: 1.0',
+            'Content-type' => 'Content-Type: text/html; charset=UTF-8'
+        ];
+
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 465;
+        $mail->SMTPDebug  = 2;
+        $mail->SMTPSecure = 'ssl';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'dyoevents.info@gmail.com'; // SMTP username
+        $mail->Password = 'Dyoevents123'; // SMTP password
+        $mail->setFrom('dyoevents.info@gmail.com', 'Dyoevents');
+        $mail->addAddress($email );     // Add a recipient
+        $mail->Subject = $subject;
+        $mail->isHTML(true);
+        $mail->Body    = $message;
+
+
+        if(!$mail->Send()) {
+            error_log("Mailer Error: " . $mail->ErrorInfo);
+
+            echo '[br /]Fail';
+        } else {
+            error_log("Message sent!");
+            echo '[br /]Pass';
+        }
+
+        return $randomString;
+    }
+
 }
