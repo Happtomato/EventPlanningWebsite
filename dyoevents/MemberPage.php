@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['user_type'])) {
 $user = strtok($_SESSION['login'], '@');
+$userid = $_SESSION['login'];
 ?>
 
 
@@ -59,24 +60,27 @@ $user = strtok($_SESSION['login'], '@');
     <div id = "product-grid">
         <div id = "txt-heading">Deine Produkte</div>
     <br>
-        <?php
-                            foreach ($_SESSION["cart_item"] as $item) {
-                                $item_price = $item["quantity"] * $item["price"];
-                            ?>
-                           
-                                <tr>
-                                    <td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
-                                    <td><?php echo $item["code"]; ?></td>
-                                    <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+    <?php
+                $orders_array = $db_handle->runQuery("SELECT OrderDate FROM Orders");
+                if (!empty($orders_array)) {
+                    foreach ($orders_array as $key => $value) {
+                ?>
+                        <div class="event-item">
+                            <form method="post" action="MemberPage.php?action=add&code=<?php echo $value["Order_ID"]; ?>">
+                                <div><div class="event-date"><?php echo $value["OrderDate"]; ?></div></div>
+                                <div class="event-tile-footer">
+                                    <div class="event-title"><?php echo $value["Product_ID"]; ?></div>
                                     
-                                    <td style="text-align:right;"><?php echo "Fr " . number_format($item_price, 2); ?></td>
-
-                                </tr>
-                            <?php
-                                $total_quantity += $item["quantity"];
-                                $total_price += ($item["price"] * $item["quantity"]);
-                            }
-                            ?>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <?php
+                    }
+                }else{
+                    echo $value["Product_ID"];
+                }
+                ?>
 </body>
 
 </html>
