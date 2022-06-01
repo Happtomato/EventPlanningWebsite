@@ -9,6 +9,8 @@ $password = $_POST["password"];
 $confirmedPW = $_POST["confirmPassword"];
 $code = $validation->sendMailToUser($login);
 
+echo $code;
+
 ?>
 
 <!doctype html>
@@ -25,11 +27,11 @@ $code = $validation->sendMailToUser($login);
     <form class="modal-content animate" action="SignUpForm.php" method="post">
         <label for="code"><b>E-mail Adresse</b></label>
         <input type="text" placeholder="Verifizierungs Code" name="code" required>
-        <input type="hidden" name="createdCode" value="<?php $code?>'" />
-        <input type="hidden" name="login" value="<?php $login?>'" />
-        <input type="hidden" name="number" value="<?php $number?>'" />
-        <input type="hidden" name="password" value="<?php $password?>'" />
-        <input type="hidden" name="confirmPassword" value="<?php $confirmedPW?>'" />
+        <input type="hidden" name="createdCode" value="<?php echo $code;?>" />
+        <input type="hidden" name="login" value="<?php echo $login;?>" />
+        <input type="hidden" name="number" value="<?php echo $number;?>'" />
+        <input type="hidden" name="password" value="<?php echo $password;?>'" />
+        <input type="hidden" name="confirmPassword" value="<?php echo $confirmedPW;?>'" />
 
         <button type="submit">Registrieren</button>
     </form>
