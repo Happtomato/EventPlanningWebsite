@@ -6,10 +6,10 @@ $userid = $_SESSION['login'];
 $id = $_SESSION["id"];/* userid of the user */
 
 if(count($_POST)>0) {
-$result = mysqli_query($con,"SELECT *from student WHERE name='" . $id . "'");
+$result = mysqli_query($con,"SELECT *from user WHERE name='" . $id . "'");
 $row=mysqli_fetch_array($result);
 if($_POST["currentPassword"] == $row["password"] && $_POST["newPassword"] == $row["confirmPassword"] ) {
-mysqli_query(connectDB(),"UPDATE student set password='" . $_POST["newPassword"] . "' WHERE name='" . $id . "'");
+mysqli_query(connectDB(),"UPDATE user set password='" . $_POST["newPassword"] . "' WHERE name='" . $id . "'");
 $message = "Password Changed Sucessfully";
 } else{
  $message = "Password is not correct";
@@ -70,31 +70,8 @@ $message = "Password Changed Sucessfully";
         <!-- Nav Bar Mobile-->
     </header>
     <h1><?php echo "Hello ".$user ; ?></h1>
-    <div id = "product-grid">
-        <!--<div id = "txt-heading">Deine Produkte</div>!-->
-    <br>
-    <!--<?php
-                $orders_array = $db_handle->runQuery("SELECT OrderDate FROM Orders");
-                if (!empty($orders_array)) {
-                    foreach ($orders_array as $key => $value) {
-                ?>
-                        <div class="event-item">
-                            <form method="post" action="MemberPage.php?action=add&code=<?php echo $value["Order_ID"]; ?>">
-                                <div><div class="event-date"><?php echo $value["OrderDate"]; ?></div></div>
-                                <div class="event-tile-footer">
-                                    <div class="event-title"><?php echo $value["Product_ID"]; ?></div>
-                                    
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <?php
-                    }
-                }else{
-                    echo $value["Product_ID"];
-                }
-                ?>
-!-->
+   
+ 
 <h3 >CHANGE PASSWORD</h3>
 <div><?php if(isset($message)) { echo $message; } ?></div>
 <form method="post" action="" >
