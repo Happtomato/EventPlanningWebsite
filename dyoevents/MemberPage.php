@@ -1,21 +1,23 @@
 <?php
 session_start();
 if(isset($_SESSION['user_type'])) {
-$user = strtok($_SESSION['login'], '@');
-$userid = $_SESSION['login'];
-$id = $_SESSION["id"];/* userid of the user */
+include("DBController.php");
+if(isset($_POST['Submit']))
+{
+ $oldpass=md5($_POST['opwd']);
+ $useremail=$_SESSION['login'];
+ $newpassword=md5($_POST['npwd']);
 
-if(count($_POST)>0) {
-$result = mysqli_query($con,"SELECT *from user WHERE name='" . $id . "'");
-$row=mysqli_fetch_array($result);
-if($_POST["currentPassword"] == $row["password"] && $_POST["newPassword"] == $row["confirmPassword"] ) {
-mysqli_query(connectDB(),"UPDATE user set password='" . $_POST["newPassword"] . "' WHERE name='" . $id . "'");
-$message = "Password Changed Sucessfully";
-} else{
- $message = "Password is not correct";
+if(password_verify($userPassword,$hash))
+{
+ $con=mysqli_query($con,"update UserAccounts set UserPassword=' $newpassword' where UserLogin='$useremail'");
+$_SESSION['msg1']="Password Changed Successfully !!";
+}
+else
+{
+$_SESSION['msg1']="Old Password not match !!";
 }
 }
-
 ?>
 
 
@@ -28,6 +30,7 @@ $message = "Password Changed Sucessfully";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
     <link rel="stylesheet" href="stylesheet.css" />
+    <script src="script.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <title>Member Page</title>
 </head>
@@ -72,23 +75,27 @@ $message = "Password Changed Sucessfully";
     <h1><?php echo "Hello ".$user ; ?></h1>
    
  
-<h3 >CHANGE PASSWORD</h3>
-<div><?php if(isset($message)) { echo $message; } ?></div>
-<form method="post" action="" >
-Current Password:<br>
-<input type="password" name="currentPassword"><span id="currentPassword" class="required"></span>
-<br>
-New Password:<br>
-<input type="password" name="newPassword"><span id="newPassword" class="required"></span>
-<br>
-Confirm Password:<br>
-<input type="password" name="confirmPassword"><span id="confirmPassword" class="required"></span>
-<br><br>
-<input type="submit">
-</form>
-<br>
+    <p style="color:red;"><?php echo $_SESSION['msg1'];?><?php echo $_SESSION['msg1']="";?></p>
+<form name="chngpwd" action="" method="post" onSubmit="return valid();">
+<table align="center">
+<tr height="50">
+<td>Old Password :</td>
+<td><input type="password" name="opwd" id="opwd"></td>
+</tr>
+<tr height="50">
+<td>New Passowrd :</td>
+<td><input type="password" name="npwd" id="npwd"></td>
+</tr>
+<tr height="50">
+<td>Confirm Password :</td>
+<td><input type="password" name="cpwd" id="cpwd"></td>
+</tr>
+<tr>
 
-<br>
+<td><input type="submit" name="Submit" value="Change Passowrd" /></td>
+</tr>
+ </table>
+</form>
 </body>
 
 </html>
