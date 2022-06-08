@@ -3,7 +3,12 @@ require_once ("ValidateUser.php");
 $vd = new ValidateUser();
 session_start();
 
-if(isset($_SESSION['user_type'])) {
+/*
+$user = strtok($_SESSION['login'], '@');
+
+
+//switch case shop
+
 if(isset($_POST['Submit'])) {
      $oldpass= $_POST['opwd'];
      $useremail=$_SESSION['login'];
@@ -16,6 +21,8 @@ if(isset($_POST['Submit'])) {
         $_SESSION['msg1']="Old Password not match !!";
     }
 }
+*/
+if(isset($_SESSION['user_type'])) {
 ?>
 
 
@@ -96,14 +103,19 @@ if(isset($_POST['Submit'])) {
 </form>
 </body>
 
-                        <td style="text-align:right;"><?php echo "Fr " . number_format($item_price, 2); ?></td>
+    <!--
+                        <td style="text-align:right;"><?php // echo "Fr " . number_format($item_price, 2); ?></td>
 
                     </tr>
-                <?php
+                <?php/*
                     $total_quantity += $item["quantity"];
                     $total_price += ($item["price"] * $item["quantity"]);
-                }
+
+                    }
+                       */
                 ?>
+
+                -->
         </main>
     </body>
 
