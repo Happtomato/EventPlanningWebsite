@@ -140,4 +140,41 @@ class ValidateUser{
         return $randomString;
     }
 
+    function correctPassword($userLogin,$userPassword,$newPass){
+
+        //create connection to db
+        require_once("DBController.php");
+        $db_handle = new DBController();
+
+        $conn = $db_handle->connectDB();
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $stmt = $conn->prepare("SELECT UserPassword FROM UserAccounts WHERE UserLogin = ?");
+        $stmt->bind_param("s", $userLogin);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $stmt->close();
+
+
+
+        $hashArray = $result->fetch_all();
+        $hash = $hashArray[0][0];
+
+
+        $hashedPW = password_hash($newPass, PASSWORD_DEFAULT);
+
+        if (password_verify($userPassword,$hash)) {
+            $stmt = $conn->prepare("UPDATE `UserAccounts` SET `UserPassword` = ? WHERE `UserAccounts`.`UserLogin` = ?");
+            $stmt->bind_param("ss", $hashedPW,$userLogin);
+            return true;
+        }
+        return false;
+    }
+
 }

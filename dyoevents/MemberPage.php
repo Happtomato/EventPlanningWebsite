@@ -1,22 +1,20 @@
 <?php
+require_once ("ValidateUser.php");
+$vd = new ValidateUser();
 session_start();
-if(isset($_SESSION['user_type'])) {
-include("DBController.php");
-if(isset($_POST['Submit']))
-{
- $oldpass=md5($_POST['opwd']);
- $useremail=$_SESSION['login'];
- $newpassword=md5($_POST['npwd']);
 
-if(password_verify($userPassword,$hash))
-{
- $con=mysqli_query($con,"update UserAccounts set UserPassword=' $newpassword' where UserLogin='$useremail'");
-$_SESSION['msg1']="Password Changed Successfully !!";
-}
-else
-{
-$_SESSION['msg1']="Old Password not match !!";
-}
+if(isset($_SESSION['user_type'])) {
+if(isset($_POST['Submit'])) {
+     $oldpass= $_POST['opwd'];
+     $useremail=$_SESSION['login'];
+     $newpassword=md5($_POST['npwd']);
+
+    if($vd->correctPassword($useremail,$oldpass,$newpassword)) {
+        $_SESSION['msg1']="Password Changed Successfully !!";
+    }
+    else {
+        $_SESSION['msg1']="Old Password not match !!";
+    }
 }
 ?>
 
@@ -78,18 +76,18 @@ $_SESSION['msg1']="Old Password not match !!";
     <p style="color:red;"><?php echo $_SESSION['msg1'];?><?php echo $_SESSION['msg1']="";?></p>
 <form name="chngpwd" action="" method="post" onSubmit="return valid();">
 <table align="center">
-<tr height="50">
-<td>Old Password :</td>
-<td><input type="password" name="opwd" id="opwd"></td>
-</tr>
-<tr height="50">
-<td>New Passowrd :</td>
-<td><input type="password" name="npwd" id="npwd"></td>
-</tr>
-<tr height="50">
-<td>Confirm Password :</td>
-<td><input type="password" name="cpwd" id="cpwd"></td>
-</tr>
+    <tr height="50">
+    <td>Old Password :</td>
+        <td><input type="password" name="opwd" id="opwd"></td>
+    </tr>
+    <tr height="50">
+        <td>New Passowrd :</td>
+    <td><input type="password" name="npwd" id="npwd"></td>
+    </tr>
+    <tr height="50">
+        <td>Confirm Password :</td>
+    <td><input type="password" name="cpwd" id="cpwd"></td>
+    </tr>
 <tr>
 
 <td><input type="submit" name="Submit" value="Change Passowrd" /></td>
