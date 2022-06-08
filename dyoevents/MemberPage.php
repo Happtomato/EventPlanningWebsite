@@ -1,22 +1,39 @@
 <?php
 session_start();
-if (isset($_SESSION['user_type'])) {
-    $user = strtok($_SESSION['login'], '@');
+if(isset($_SESSION['user_type'])) {
+include("DBController.php");
+if(isset($_POST['Submit']))
+{
+ $oldpass=md5($_POST['opwd']);
+ $useremail=$_SESSION['login'];
+ $newpassword=md5($_POST['npwd']);
+
+if(password_verify($userPassword,$hash))
+{
+ $con=mysqli_query($con,"update UserAccounts set UserPassword=' $newpassword' where UserLogin='$useremail'");
+$_SESSION['msg1']="Password Changed Successfully !!";
+}
+else
+{
+$_SESSION['msg1']="Old Password not match !!";
+}
+}
 ?>
 
 
     <!doctype html>
     <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
-        <link rel="stylesheet" href="stylesheet.css" />
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-        <title>Member Page</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <title>Member Page</title>
+</head>
 
     <body>
         <header>
@@ -53,22 +70,33 @@ if (isset($_SESSION['user_type'])) {
                 </div>
             </div>
 
-            <!-- Nav Bar Mobile-->
-        </header>
-        <main>
-            <h1><?php echo "Hello " . $user; ?></h1>
-            <div id="product-grid">
-                <div id="txt-heading">Deine Produkte</div>
-                <br>
-                <?php
-                foreach ($_SESSION["cart_item"] as $item) {
-                    $item_price = $item["quantity"] * $item["price"];
-                ?>
+        <!-- Nav Bar Mobile-->
+    </header>
+    <h1><?php echo "Hello ".$user ; ?></h1>
+   
+ 
+    <p style="color:red;"><?php echo $_SESSION['msg1'];?><?php echo $_SESSION['msg1']="";?></p>
+<form name="chngpwd" action="" method="post" onSubmit="return valid();">
+<table align="center">
+<tr height="50">
+<td>Old Password :</td>
+<td><input type="password" name="opwd" id="opwd"></td>
+</tr>
+<tr height="50">
+<td>New Passowrd :</td>
+<td><input type="password" name="npwd" id="npwd"></td>
+</tr>
+<tr height="50">
+<td>Confirm Password :</td>
+<td><input type="password" name="cpwd" id="cpwd"></td>
+</tr>
+<tr>
 
-                    <tr>
-                        <td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
-                        <td><?php echo $item["code"]; ?></td>
-                        <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+<td><input type="submit" name="Submit" value="Change Passowrd" /></td>
+</tr>
+ </table>
+</form>
+</body>
 
                         <td style="text-align:right;"><?php echo "Fr " . number_format($item_price, 2); ?></td>
 
