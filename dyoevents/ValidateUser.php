@@ -1,10 +1,5 @@
 <?php
 
-
-require("PHPMailer-master/src/PHPMailer.php");
-require("PHPMailer-master/src/SMTP.php");
-require ("PHPMailer-master/src/Exception.php");
-
 session_start();
 
 require_once("currentUser.php");
@@ -90,55 +85,34 @@ class ValidateUser{
 
     }
 
-    /**
-     * @throws \Exception
-     */
     function sendMailToUser(string $email): string
     {
         $randomString = md5(uniqid('', true));
-        $subject = 'Please activate your account';
-        $message = <<<MSG
-        Hi,
-        please click the following link to activate your account:
-        {$randomString}
-        MSG;
 
+        //set url for sending email api
+        $url = "https://test-backend.flogintra.ch/dd_api_sendmail.asp";
 
+        $curl = curl_init($url);
 
-        $headers = [
-            'From' => 'From: dyoevents.info@gmail.com',
-            'MIME-Version' => 'MIME-Version: 1.0',
-            'Content-type' => 'Content-Type: text/html; charset=UTF-8'
-        ];
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl,CURLOPT_POST,true);
+        $subject = "Email verification";
+        $content = "verify your email with the following code: " . $randomString;
 
-        $mail = new PHPMailer\PHPMailer\PHPMailer();
+        $headers = array(
+            "X-DD-Key: 4471C30F-81F4-4487-A16D-20586BD569AE",
+            "X-DD-MailReceiver: $email",
+            "X-DD-MailSubject: $subject",
+            "X-DD-MailContent: $content",
+        );
 
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->Port = 465;
-        $mail->SMTPDebug  = 2;
-        $mail->SMTPSecure = 'ssl';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'dyoevents.info@gmail.com'; // SMTP username
-        $mail->Password = 'Dyoevents123'; // SMTP password
-        $mail->setFrom('dyoevents.info@gmail.com', 'Dyoevents');
-        $mail->addAddress($email );     // Add a recipient
-        $mail->Subject = $subject;
-        $mail->isHTML(true);
-        $mail->Body    = $message;
-
-
-        if(!$mail->Send()) {
-            error_log("Mailer Error: " . $mail->ErrorInfo);
-
-            echo '[br /]Fail';
-        } else {
-            error_log("Message sent!");
-            echo '[br /]Pass';
-        }
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_exec($curl);
+        curl_close($curl);
 
         return $randomString;
     }
+
 
     function correctPassword($userLogin,$userPassword,$newPass){
 

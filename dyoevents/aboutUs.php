@@ -34,7 +34,7 @@ if(isset($_SESSION['user_type'])) {
             <li><a href="aboutUs.php">Über uns</a></li>
             <li><a href="shop.php">Tickets</a></li>
             <li><a href="profilePage.php">Profil</a></li>
-            <li><a href="index.html">Ausloggen</a></li>
+            <li><a href="logOut.php">Ausloggen</a></li>
         </ul>
         <!-- Nav Bar-->
         <!-- Nav Bar Mobile-->
@@ -54,7 +54,7 @@ if(isset($_SESSION['user_type'])) {
             <button class="dropdown-btn"><i class="fa fa-user"></i></button>
             <div class="dropdown-content">
                 <a href="profilePage.php">Profil</a>
-                <a href="index.html">Ausloggen</a>
+                <a href="logOut.php">Ausloggen</a>
             </div>
         </div>
 

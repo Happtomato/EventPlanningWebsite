@@ -4,20 +4,23 @@ $db_handle = new DBController();
 session_start();
 if(isset($_SESSION['user_type'])) {
 
-    ?>
+?>
 
 <!doctype html>
 <html lang="en">
 
-<head>
+<HEAD>
+    <TITLE>Events</TITLE>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="phpStyle.css" />
+    <link rel="icon" type="image/png" href="Pictures/D-Logo.png" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <title>Document</title>
-</head>
+
+</HEAD>
 
 <body>
     <header>
@@ -56,31 +59,38 @@ if(isset($_SESSION['user_type'])) {
 
         <!-- Nav Bar Mobile-->
     </header>
-<div id="product-grid">
-    <div class="txt-heading">Pictures</div>
-    <?php
-    $product_array = $db_handle->runQuery("SELECT * FROM Pictures ORDER BY Picture_ID ASC");
-    if (!empty($product_array)) {
-        foreach($product_array as $key=>$value){
-            ?>
-            <div class="product-item">
-                    <div class="product-image"><img src="<?php echo $value["PictureURL"]; ?>"></div>
-                    <div class="product-tile-footer">
-                        <div class="product-title"><?php echo $value["PictureName"]; ?></div>
-                    </div>
-                </div>
-        <?php
-            }
-        }
-        ?>
+
+    <div class="txt-heading">Events</div>
+    
     </div>
-    </div>
+     <div id="event-grid">
+                
+                <?php
+                $event_array = $db_handle->runQuery("SELECT * FROM Events ORDER BY Event_ID ASC");
+                if (!empty($event_array)) {
+                    foreach ($event_array as $key => $value) {
+                ?>
+                        <div class="event-item">
+                            <form method="post" action="Events.php?action=add&code=<?php echo $value["Event_ID"]; ?>">
+                                <div><div class="event-date"><?php echo $value["EventDate"]; ?></div></div>
+                                <div class="event-tile-footer">
+                                    <div class="event-title"><?php echo $value["EventName"]; ?></div>
+                                    <div class="event-description"><?php echo $value["EventDescription"]; ?></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+            </div>
 
 </body>
 
 </html>
 
-<?php
+    <?php
 }
 else{
     session_destroy();

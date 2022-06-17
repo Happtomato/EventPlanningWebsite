@@ -1,11 +1,15 @@
 <?php
 
-$login = $_POST["login"];
-$number = $_POST["number"];
-$password = $_POST["password"];
-$confirmedPW = $_POST["confirmPassword"];
+session_start();
+$login = $_SESSION['login'];
+$number = $_SESSION['number'];
+$password = $_SESSION['password'];
+$confirmedPW = $_SESSION['confirmPassword'];
 $code = $_POST['code'];
-$createdCode = $_POST['createdCode'];
+$createdCode = $_SESSION['verificationCode'];
+
+session_destroy();
+
 
 if (!strcmp($password,$confirmedPW)) {
     if(!strcmp($code,$createdCode)) {
@@ -45,6 +49,6 @@ if (!strcmp($password,$confirmedPW)) {
     }
     //if password is not correct
 } else {
-    echo "passwords don't match";
+    echo "passwords do not match";
     header("Location: signUpForm.html");
 }
